@@ -6,11 +6,10 @@ import java.util.Scanner;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-public class Main{
+public class Main {
 
     public static void main(String[] args) {
-        System.out.println("ola");
+        System.out.println("Oi");
     }
-    
+
 }

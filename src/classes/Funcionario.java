@@ -2,8 +2,8 @@ package classes;
 
 public class Funcionario extends Pessoa {
 
-    private String senha;
-    private float salario;
+    protected String senha;
+    protected float salario;
 
     public Funcionario(String senha, float salario, long cpf, String nome, String dataDeNascimento) {
         super(cpf, nome, dataDeNascimento);

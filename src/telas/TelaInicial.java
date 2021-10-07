@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package telas;
+
 import java.util.Calendar;
 
 /**
@@ -11,23 +12,22 @@ import java.util.Calendar;
  * @author Marcelo Piano
  */
 public class TelaInicial extends javax.swing.JFrame {
+
     private Calendar calendario;
-    
-    
+
     /**
      * Creates new form TelaInicial
      */
     public TelaInicial() {
         initComponents();
-        
+
         Calendar calendario = Calendar.getInstance();
-        
+
         //Tentativa de expor a data do dia.
-        lblDataTelaInicial.setText(String.valueOf(Calendar.DAY_OF_WEEK) + "/" + 
-                                   String.valueOf(Calendar.DAY_OF_MONTH) + "/" + 
-                                   String.valueOf(Calendar.YEAR));
-        
-        
+        lblDataTelaInicial.setText(String.valueOf(Calendar.DAY_OF_WEEK) + "/"
+                + String.valueOf(Calendar.DAY_OF_MONTH) + "/"
+                + String.valueOf(Calendar.YEAR));
+
     }
 
     /**
@@ -62,8 +62,6 @@ public class TelaInicial extends javax.swing.JFrame {
 
         btnFuncionarioTelaInicial.setText("Funcionário");
 
-        lblDataTelaInicial.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,7 +91,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblInterfaceTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDataTelaInicial))
+                    .addComponent(lblDataTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sprTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

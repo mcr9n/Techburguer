@@ -1,10 +1,10 @@
 package classes;
 
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
+
     private ArrayList<Pedido> pedidos;
     private boolean fazAniversario;
     private boolean jaFezPedidoAniversario;
@@ -22,6 +22,7 @@ public class Cliente extends Pessoa{
         }else{
             fazAniversario = false;
         }
+
         if(checarAniversario()){
             
             jaFezPedidoAniversario = true;
@@ -30,32 +31,34 @@ public class Cliente extends Pessoa{
             
         }
         
+
+
     }
-    public void pagar(){
-        for(int i = 0; i < pedidos.size();i++){
-            if(pedidos.get(i).isPago() != true){
+
+    public void pagar() {
+        for (int i = 0; i < pedidos.size(); i++) {
+            if (pedidos.get(i).isPago() != true) {
                 pedidos.get(i).setPago(true);
             }
-    
+
+        }
     }
-    }
-    public void zerarQuantidadeDePedidos(){
+
+    public void zerarQuantidadeDePedidos() {
         pedidos.clear();
-    
-    
+
     }
-    public boolean checarAniversario(){
-        if(fazAniversario == true){
-        for(int i = 0; i < pedidos.size();i++){
-            if(pedidos.get(i).isDeAniversariante()){
-                return true;
+
+    public boolean checarAniversario() {
+        if (fazAniversario == true) {
+            for (int i = 0; i < pedidos.size(); i++) {
+                if (pedidos.get(i).isDeAniversariante()) {
+                    return true;
+                }
             }
+            return false;
         }
         return false;
     }
-        return false;
-    }
-    
-    
-    
+
 }

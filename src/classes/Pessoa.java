@@ -1,7 +1,7 @@
 package classes;
 
-
 public class Pessoa {
+
     protected long cpf;
     protected String nome;
     protected String dataDeNascimento;
@@ -11,8 +11,6 @@ public class Pessoa {
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
     }
-    
-    
 
     public long getCpf() {
         return cpf;
@@ -37,6 +35,5 @@ public class Pessoa {
     public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
-    
-    
+
 }

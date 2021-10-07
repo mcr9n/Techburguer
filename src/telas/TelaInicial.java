@@ -20,13 +20,12 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
-
-        Calendar calendario = Calendar.getInstance();
-
-        //Tentativa de expor a data do dia.
-        lblDataTelaInicial.setText(String.valueOf(Calendar.DAY_OF_WEEK) + "/"
-                + String.valueOf(Calendar.DAY_OF_MONTH) + "/"
-                + String.valueOf(Calendar.YEAR));
+        Calendar c = Calendar.getInstance();
+        
+        // 
+        lblDataTelaInicial.setText(String.valueOf(c.get(Calendar.DAY_OF_MONTH)) + "/"
+                + String.valueOf(c.get(Calendar.MONTH) + 1) + "/"
+                + String.valueOf(c.get(Calendar.YEAR)));
 
     }
 
@@ -74,10 +73,14 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClienteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(213, 213, 213))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClienteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(213, 213, 213))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblInterfaceTelaInicial)

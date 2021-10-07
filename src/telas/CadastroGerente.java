@@ -16,6 +16,7 @@ public class CadastroGerente extends javax.swing.JFrame {
      */
     public CadastroGerente() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -1,7 +1,7 @@
 package classes;
 
-
 public class Ingrediente {
+
     private String nome;
     private int quantidade;
 

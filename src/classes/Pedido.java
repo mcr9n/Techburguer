@@ -2,8 +2,8 @@ package classes;
 
 import java.util.ArrayList;
 
-
 public class Pedido {
+
     static int contadorDeSenhas;
     private ArrayList<Produto> produtos;
     private String formaDePagamento;
@@ -22,11 +22,11 @@ public class Pedido {
         this.pago = pago;
         this.pronto = pronto;
     }
-    
+
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
-    
+
     public String getFormaDePagamento() {
         return formaDePagamento;
     }
@@ -62,7 +62,7 @@ public class Pedido {
     public void setPronto(boolean pronto) {
         this.pronto = pronto;
     }
-    
+
     public void incluirProdutos(Produto produto) {
         this.produtos.add(produto);
     }

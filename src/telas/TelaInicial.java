@@ -22,7 +22,7 @@ public class TelaInicial extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Calendar c = Calendar.getInstance();
-        
+
         // 
         lblDataTelaInicial.setText(String.valueOf(c.get(Calendar.DAY_OF_MONTH)) + "/"
                 + String.valueOf(c.get(Calendar.MONTH) + 1) + "/"

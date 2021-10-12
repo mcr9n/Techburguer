@@ -1,6 +1,5 @@
 package telas;
 
-
 public class Principal extends javax.swing.JFrame {
 
     /**

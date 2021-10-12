@@ -18,7 +18,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    public void carregarOcupacoes(){
+
+    public void carregarOcupacoes() {
         cmbOcupacao.removeAllItems();
         cmbOcupacao.addItem("Selecione a ocupação do funcionário");
         cmbOcupacao.addItem("Cozinheiro");

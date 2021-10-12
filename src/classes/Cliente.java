@@ -13,25 +13,22 @@ public class Cliente extends Pessoa {
         super(cpf, nome, dataDeNascimento);
         String[] data_nascimento = dataDeNascimento.split("/");
         Calendar c = Calendar.getInstance();
-            
-        
+
         // TODO: Pegar a data de hoje corretamente
-        if(c.get(Calendar.DAY_OF_MONTH)==Integer.parseInt(data_nascimento[0]) && (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1])){
+        if (c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(data_nascimento[0]) && (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1])) {
             fazAniversario = true;
-            
-        }else{
+
+        } else {
             fazAniversario = false;
         }
 
-        if(checarAniversario()){
-            
-            jaFezPedidoAniversario = true;
-        }else{
-            jaFezPedidoAniversario = false;
-            
-        }
-        
+        if (checarAniversario()) {
 
+            jaFezPedidoAniversario = true;
+        } else {
+            jaFezPedidoAniversario = false;
+
+        }
 
     }
 

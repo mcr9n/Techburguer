@@ -5,6 +5,10 @@
  */
 package telas;
 
+import classes.Caixa;
+import classes.Cozinheiro;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 144fps
@@ -32,12 +36,13 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
         btnCaixa = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Selecione", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
         btnCozinheiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cozinheiro.png"))); // NOI18N
         btnCozinheiro.setText("Cozinheiro");
+        btnCozinheiro.setToolTipText("Acessar painel cozinheiro");
         btnCozinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCozinheiroActionPerformed(evt);
@@ -46,6 +51,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
 
         btnCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/caixa.png"))); // NOI18N
         btnCaixa.setText("Caixa");
+        btnCaixa.setToolTipText("Acessar painel caixa");
         btnCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCaixaActionPerformed(evt);
@@ -74,6 +80,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
         );
 
         btnSair.setText("Sair");
+        btnSair.setToolTipText("fechar janela");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -86,7 +93,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(244, 244, 244)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 57, Short.MAX_VALUE)
+                .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                 .addGap(244, 244, 244))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -107,15 +114,47 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixaActionPerformed
-        // TODO add your handling code here:
+        boolean achou = false;
+        String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+        for(int i = 0; i<funcionarios.size();i++){
+             if(funcionarios.get(i) instanceof Caixa){
+                 Caixa k = (Caixa)funcionarios.get(i);
+                 if(senha.equals(k.getSenha())){
+                     new PedidosEmDinheiro().setVisible(true);
+                     achou = true;
+                 
+                 }
+             
+             
+             }
+        }
+        if(!achou){
+            JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um caixa!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_btnCaixaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCozinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCozinheiroActionPerformed
-        // TODO add your handling code here:
+        boolean achou = false;
+        String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+        for(int i = 0; i<funcionarios.size();i++){
+             if(funcionarios.get(i) instanceof Cozinheiro){
+                 Cozinheiro c = (Cozinheiro)funcionarios.get(i);
+                 if(senha.equals(c.getSenha())){
+                     new ListaDePedidos().setVisible(true);
+                     achou = true;
+                 
+                 }
+             
+             
+             }
+        }
+        if(!achou){
+            JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um cozinheiro!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_btnCozinheiroActionPerformed
 
     /**

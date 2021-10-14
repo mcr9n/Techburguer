@@ -5,6 +5,9 @@
  */
 package telas;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 144fps
@@ -16,6 +19,17 @@ public class ListaDePedidos extends javax.swing.JFrame {
      */
     public ListaDePedidos() {
         initComponents();
+        carregarListaDePedidos();
+    }
+    public void carregarListaDePedidos(){
+        DefaultTableModel modelo = new DefaultTableModel(new Object[] {"Senha", "Aniversariante", "Total", "Forma de Pagamento", "Pago", "Pronto"}, 0);
+        for(int i =0;i < listaPedidos.size();i++){
+            Object linha[] = new Object[]{listaPedidos.get(i).getSenhaPedido(),listaPedidos.get(i).isDeAniversariante(), listaPedidos.get(i).getTotal(), listaPedidos.get(i).getFormaDePagamento(), listaPedidos.get(i).isPago(), listaPedidos.get(i).isPronto()};
+            modelo.addRow(linha);
+             
+        }
+        tblPedidos.setModel(modelo);
+    
     }
 
     /**
@@ -33,7 +47,7 @@ public class ListaDePedidos extends javax.swing.JFrame {
         btnPedidoPronto = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Pedidos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
@@ -54,6 +68,11 @@ public class ListaDePedidos extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tblPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPedidosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblPedidos);
@@ -77,9 +96,19 @@ public class ListaDePedidos extends javax.swing.JFrame {
 
         btnPedidoPronto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editar.png"))); // NOI18N
         btnPedidoPronto.setText("Pedido Pronto");
+        btnPedidoPronto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidoProntoActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/saida.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +139,29 @@ public class ListaDePedidos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+       this.setVisible(false);
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void tblPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPedidosMouseClicked
+
+
+    }//GEN-LAST:event_tblPedidosMouseClicked
+
+    private void btnPedidoProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoProntoActionPerformed
+        if(tblPedidos.getSelectedRow()>=0 && tblPedidos.getSelectedRow()<listaPedidos.size()){
+            int i = tblPedidos.getSelectedRow();
+            listaPedidos.get(i).setPronto(true);
+            if(listaPedidos.get(i).isPago() == true && listaPedidos.get(i).isPronto() == true){
+                listaPedidos.remove(i);
+            }
+            carregarListaDePedidos();
+        }else{
+            JOptionPane.showMessageDialog(null,"Selecione um pedido na tabela!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        
+        }
+    }//GEN-LAST:event_btnPedidoProntoActionPerformed
 
     /**
      * @param args the command line arguments

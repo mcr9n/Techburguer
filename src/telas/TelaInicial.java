@@ -39,17 +39,18 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnClienteTelaInicial = new javax.swing.JButton();
         lblInterfaceTelaInicial = new javax.swing.JLabel();
         lblEscolhaPerfilTelainicial = new javax.swing.JLabel();
         sprTelaInicial = new javax.swing.JSeparator();
         btnGerenteTelaInicial = new javax.swing.JButton();
         btnFuncionarioTelaInicial = new javax.swing.JButton();
         lblDataTelaInicial = new javax.swing.JLabel();
-        btnClienteTelaInicial = new javax.swing.JButton();
-        btnSairTelaInicial = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 500));
+
+        btnClienteTelaInicial.setText("Cliente");
 
         lblInterfaceTelaInicial.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         lblInterfaceTelaInicial.setText("Interface TechBurguer");
@@ -58,32 +59,8 @@ public class TelaInicial extends javax.swing.JFrame {
         lblEscolhaPerfilTelainicial.setText("Escolha o Perfil desse despositivo:");
 
         btnGerenteTelaInicial.setText("Gerente");
-        btnGerenteTelaInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerenteTelaInicialActionPerformed(evt);
-            }
-        });
 
         btnFuncionarioTelaInicial.setText("Funcionário");
-        btnFuncionarioTelaInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFuncionarioTelaInicialActionPerformed(evt);
-            }
-        });
-
-        btnClienteTelaInicial.setText("Cliente");
-        btnClienteTelaInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteTelaInicialActionPerformed(evt);
-            }
-        });
-
-        btnSairTelaInicial.setText("Sair");
-        btnSairTelaInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairTelaInicialActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,27 +68,26 @@ public class TelaInicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sprTelaInicial, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(lblEscolhaPerfilTelainicial)
+                .addContainerGap(162, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClienteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(213, 213, 213))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblInterfaceTelaInicial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDataTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClienteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(213, 213, 213))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(lblEscolhaPerfilTelainicial)
-                .addContainerGap(162, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSairTelaInicial)
-                .addGap(263, 263, 263))
-            .addComponent(jSeparator1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,34 +106,11 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnSairTelaInicial)
-                .addContainerGap())
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnFuncionarioTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioTelaInicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFuncionarioTelaInicialActionPerformed
-
-    private void btnGerenteTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteTelaInicialActionPerformed
-        // TODO add your handling code here:
-        new LoginGerente().setVisible(true);
-    }//GEN-LAST:event_btnGerenteTelaInicialActionPerformed
-
-    private void btnClienteTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteTelaInicialActionPerformed
-        // TODO add your handling code here:
-        new CadastroCliente().setVisible(true);
-    }//GEN-LAST:event_btnClienteTelaInicialActionPerformed
-
-    private void btnSairTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairTelaInicialActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnSairTelaInicialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,8 +151,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnClienteTelaInicial;
     private javax.swing.JButton btnFuncionarioTelaInicial;
     private javax.swing.JButton btnGerenteTelaInicial;
-    private javax.swing.JButton btnSairTelaInicial;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDataTelaInicial;
     private javax.swing.JLabel lblEscolhaPerfilTelainicial;
     private javax.swing.JLabel lblInterfaceTelaInicial;

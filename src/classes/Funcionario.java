@@ -4,6 +4,7 @@ public class Funcionario extends Pessoa {
 
     protected String senha;
     protected float salario;
+    private String ocupacao;
 
     public Funcionario(String senha, float salario, long cpf, String nome, String dataDeNascimento) {
         super(cpf, nome, dataDeNascimento);
@@ -26,5 +27,12 @@ public class Funcionario extends Pessoa {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-
+    
+    public void setOcupacao(String ocupacao){
+        this.ocupacao = ocupacao;
+    }
+    
+    public String getOcupacao(){
+        return ocupacao;
+    }
 }

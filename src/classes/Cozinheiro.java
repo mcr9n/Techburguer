@@ -18,5 +18,6 @@ public class Cozinheiro extends Funcionario {
     public void setListaPedidos(ArrayList<Pedido> listaPedidos) {
         this.listaPedidos = listaPedidos;
     }
-
+    
+   
 }

@@ -92,6 +92,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cozinheiro"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCozinheiroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCaixa">
           <Properties>

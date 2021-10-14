@@ -34,10 +34,15 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Selecione", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
         btnCozinheiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cozinheiro.png"))); // NOI18N
         btnCozinheiro.setText("Cozinheiro");
+        btnCozinheiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCozinheiroActionPerformed(evt);
+            }
+        });
 
         btnCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/caixa.png"))); // NOI18N
         btnCaixa.setText("Caixa");
@@ -81,7 +86,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(244, 244, 244)
-                .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 57, Short.MAX_VALUE)
                 .addGap(244, 244, 244))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -108,6 +113,10 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnCozinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCozinheiroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCozinheiroActionPerformed
 
     /**
      * @param args the command line arguments

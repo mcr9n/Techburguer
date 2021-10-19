@@ -48,7 +48,6 @@
                               <Component id="btnExcluirCadastroFuncionario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnPesquisarCadastroFuncionario" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -63,13 +62,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlCadastroFuncionario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCancelarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnEditarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnExcluirCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPesquisarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnNovoCadastroFuncionario" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnSalvarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnCancelarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEditarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExcluirCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPesquisarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSalvarCadastroFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="scrlpnlCadastroFuncionario" min="-2" pref="150" max="-2" attributes="0"/>

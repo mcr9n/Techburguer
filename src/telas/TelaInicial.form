@@ -101,11 +101,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenteTelaInicialActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFuncionarioTelaInicial">
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFuncionarioTelaInicialActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDataTelaInicial">
     </Component>

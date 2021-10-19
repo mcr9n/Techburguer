@@ -35,6 +35,10 @@ public class Pedido {
         this.formaDePagamento = formaDePagamento;
     }
 
+    public int getSenhaPedido() {
+        return senhaPedido;
+    }
+    
     public float getTotal() {
         return total;
     }

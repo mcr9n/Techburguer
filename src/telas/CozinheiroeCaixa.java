@@ -7,6 +7,8 @@ package telas;
 
 import classes.Caixa;
 import classes.Cozinheiro;
+import classes.Funcionario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author 144fps
  */
 public class CozinheiroeCaixa extends javax.swing.JFrame {
+    public static ArrayList<Funcionario> funcionarios;
 
     /**
      * Creates new form CozinheiroeCaixa

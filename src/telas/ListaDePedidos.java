@@ -5,6 +5,8 @@
  */
 package telas;
 
+import classes.Pedido;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author 144fps
  */
 public class ListaDePedidos extends javax.swing.JFrame {
+    public static ArrayList<Pedido> listaPedidos;
 
     /**
      * Creates new form ListaDePedidos

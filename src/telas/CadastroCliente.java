@@ -5,18 +5,24 @@
  */
 package telas;
 
+import classes.Cliente;
+import java.util.ArrayList;
+
 /**
  *
  * @author 144fps
  */
 public class CadastroCliente extends javax.swing.JFrame {
+    static ArrayList<Cliente> clientes;
+    static Cliente clienteAtual;
+    
 
     /**
      * Creates new form CadastroCliente
      */
     public CadastroCliente() {
         initComponents();
-
+        this.clientes = new ArrayList();
         setLocationRelativeTo(null);
     }
 
@@ -31,12 +37,12 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         pnlDadosCliente = new javax.swing.JPanel();
         lblCpf = new javax.swing.JLabel();
-        txtCpf = new javax.swing.JTextField();
+        cpfTextField = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         lblDataDeNascimento = new javax.swing.JLabel();
-        txtDataDeNascimento = new javax.swing.JFormattedTextField();
-        btnNovo = new javax.swing.JButton();
+        dataDeNascimentoTextField = new javax.swing.JFormattedTextField();
+        btnEntrarCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -46,9 +52,9 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         lblCpf.setText("CPF:");
 
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+        cpfTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCpfActionPerformed(evt);
+                cpfTextFieldActionPerformed(evt);
             }
         });
 
@@ -56,12 +62,12 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         lblDataDeNascimento.setText("DATA DE NASCIMENTO:");
 
-        txtDataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        dataDeNascimentoTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        btnNovo.setText("Entrar / Cadastrar");
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrarCadastrar.setText("Entrar / Cadastrar");
+        btnEntrarCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                btnEntrarCadastrarActionPerformed(evt);
             }
         });
 
@@ -78,17 +84,17 @@ public class CadastroCliente extends javax.swing.JFrame {
                             .addComponent(lblCpf))
                         .addGap(18, 18, 18)
                         .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlDadosClienteLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(lblDataDeNascimento)
                         .addGap(18, 18, 18)
-                        .addComponent(txtDataDeNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dataDeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosClienteLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnNovo)
+                .addComponent(btnEntrarCadastrar)
                 .addGap(149, 149, 149))
         );
         pnlDadosClienteLayout.setVerticalGroup(
@@ -97,17 +103,17 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCpf)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataDeNascimento)
-                    .addComponent(txtDataDeNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataDeNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(btnNovo)
+                .addComponent(btnEntrarCadastrar)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -131,14 +137,50 @@ public class CadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+    private void cpfTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
+    }//GEN-LAST:event_cpfTextFieldActionPerformed
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovoActionPerformed
+    private void btnEntrarCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarCadastrarActionPerformed
+        // Checar se o usuário já está cadastrado
+        // Se estiver, logamos com as informações deles
+        // Se não estiver cadastrar
+        
+        long cpf =  Long.parseLong(this.cpfTextField.getText());
+        String name = this.nameTextField.getText();
+        String dataDeNascimento = this.dataDeNascimentoTextField.getText();
+        
+        if (clienteExiste(cpf, clientes)) {
+           clienteAtual = encontrarCliente(cpf, clientes);
+        } else {
+	   clienteAtual = new Cliente(cpf, name, dataDeNascimento);
+	   clientes.add(clienteAtual);
+        }
 
+	// Proxima pagina
+	FazerPedido telaFazerPedido = new FazerPedido();
+	telaFazerPedido.setVisible(true);
+	this.setVisible(false);
+    }//GEN-LAST:event_btnEntrarCadastrarActionPerformed
+
+    private Cliente encontrarCliente(long cpf, ArrayList<Cliente> clientes) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == cpf) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+    
+    private boolean clienteExiste(long cpf, ArrayList<Cliente> clientes) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == cpf) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -175,13 +217,13 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnEntrarCadastrar;
+    private javax.swing.JTextField cpfTextField;
+    private javax.swing.JFormattedTextField dataDeNascimentoTextField;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataDeNascimento;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JPanel pnlDadosCliente;
-    private javax.swing.JTextField txtCpf;
-    private javax.swing.JFormattedTextField txtDataDeNascimento;
-    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

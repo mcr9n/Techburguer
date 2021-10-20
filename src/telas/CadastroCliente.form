@@ -67,22 +67,22 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtNome" min="-2" pref="219" max="-2" attributes="0"/>
-                              <Component id="txtCpf" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="nameTextField" min="-2" pref="219" max="-2" attributes="0"/>
+                              <Component id="cpfTextField" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="lblDataDeNascimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtDataDeNascimento" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="dataDeNascimentoTextField" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEntrarCadastrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -93,20 +93,20 @@
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblCpf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cpfTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDataDeNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDataDeNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataDeNascimentoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEntrarCadastrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -118,9 +118,9 @@
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCpf">
+        <Component class="javax.swing.JTextField" name="cpfTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCpfActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNome">
@@ -128,26 +128,26 @@
             <Property name="text" type="java.lang.String" value="NOME:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNome">
+        <Component class="javax.swing.JTextField" name="nameTextField">
         </Component>
         <Component class="javax.swing.JLabel" name="lblDataDeNascimento">
           <Properties>
             <Property name="text" type="java.lang.String" value="DATA DE NASCIMENTO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtDataDeNascimento">
+        <Component class="javax.swing.JFormattedTextField" name="dataDeNascimentoTextField">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format subtype="1" type="1"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnNovo">
+        <Component class="javax.swing.JButton" name="btnEntrarCadastrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar / Cadastrar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEntrarCadastrarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

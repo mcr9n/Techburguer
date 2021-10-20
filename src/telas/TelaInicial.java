@@ -114,6 +114,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         this.setVisible(false);
+        CadastroCliente telaCliente = new CadastroCliente();
+        telaCliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
     /**

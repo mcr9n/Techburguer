@@ -120,7 +120,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlCadastroFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de funcionário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        pnlCadastroFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Dados de funcionário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
         lblSenhaFuncionarioCadastroFuncionario.setText("SENHA DE FUNCIONÁRIO:");
 
@@ -335,8 +335,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(btnExcluirCadastroFuncionario)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnPesquisarCadastroFuncionario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(btnPesquisarCadastroFuncionario)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -345,13 +344,14 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlCadastroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarCadastroFuncionario)
-                    .addComponent(btnEditarCadastroFuncionario)
-                    .addComponent(btnExcluirCadastroFuncionario)
-                    .addComponent(btnPesquisarCadastroFuncionario)
-                    .addComponent(btnNovoCadastroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvarCadastroFuncionario))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNovoCadastroFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCancelarCadastroFuncionario)
+                        .addComponent(btnEditarCadastroFuncionario)
+                        .addComponent(btnExcluirCadastroFuncionario)
+                        .addComponent(btnPesquisarCadastroFuncionario)
+                        .addComponent(btnSalvarCadastroFuncionario)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrlpnlCadastroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

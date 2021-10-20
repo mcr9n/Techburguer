@@ -8,6 +8,7 @@ package telas;
 import classes.Caixa;
 import classes.Cozinheiro;
 import javax.swing.JOptionPane;
+import static telas.CadastroFuncionario.listaFuncionario;
 
 /**
  *
@@ -116,9 +117,9 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     private void btnCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixaActionPerformed
         boolean achou = false;
         String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-        for(int i = 0; i<funcionarios.size();i++){
-             if(funcionarios.get(i) instanceof Caixa){
-                 Caixa k = (Caixa)funcionarios.get(i);
+        for(int i = 0; i<listaFuncionario.size();i++){
+             if(listaFuncionario.get(i) instanceof Caixa){
+                 Caixa k = (Caixa)listaFuncionario.get(i);
                  if(senha.equals(k.getSenha())){
                      new PedidosEmDinheiro().setVisible(true);
                      achou = true;
@@ -140,9 +141,9 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     private void btnCozinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCozinheiroActionPerformed
         boolean achou = false;
         String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-        for(int i = 0; i<funcionarios.size();i++){
-             if(funcionarios.get(i) instanceof Cozinheiro){
-                 Cozinheiro c = (Cozinheiro)funcionarios.get(i);
+        for(int i = 0; i<listaFuncionario.size();i++){
+             if(listaFuncionario.get(i) instanceof Cozinheiro){
+                 Cozinheiro c = (Cozinheiro)listaFuncionario.get(i);
                  if(senha.equals(c.getSenha())){
                      new ListaDePedidos().setVisible(true);
                      achou = true;

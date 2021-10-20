@@ -7,13 +7,14 @@ package telas;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static telas.ListaDePedidos.listaPedidos;
 
 /**
  *
  * @author 144fps
  */
 public class PedidosEmDinheiro extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form PedidosEmDinheiro
      */

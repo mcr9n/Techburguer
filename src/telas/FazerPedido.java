@@ -4,16 +4,25 @@
  */
 package telas;
 
+import classes.Produto;
+import java.util.ArrayList;
+
 /**
  *
  * @author dapedu
  */
 public class FazerPedido extends javax.swing.JFrame {
+    public ArrayList<Produto> produtosDisponiveis;
+    private boolean pedidoDeAniversario;
+    
+    
+    
 
     /**
      * Creates new form ProdutosDisponíveis
      */
     public FazerPedido() {
+        this.produtosDisponiveis = new ArrayList();   
         initComponents();
     }
 
@@ -39,7 +48,7 @@ public class FazerPedido extends javax.swing.JFrame {
         botaoFinalizarPedido = new javax.swing.JButton();
         valorTotal = new java.awt.Label();
         label2 = new java.awt.Label();
-        pedidoDeAniversario = new javax.swing.JCheckBox();
+        checkBoxPedidoDeAniversario = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Produtos Disponíveis");
@@ -159,11 +168,11 @@ public class FazerPedido extends javax.swing.JFrame {
         label2.setForeground(new java.awt.Color(187, 187, 187));
         label2.setText("Valor total:");
 
-        pedidoDeAniversario.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        pedidoDeAniversario.setText("Pedido de Aniversário");
-        pedidoDeAniversario.addActionListener(new java.awt.event.ActionListener() {
+        checkBoxPedidoDeAniversario.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        checkBoxPedidoDeAniversario.setText("Pedido de Aniversário");
+        checkBoxPedidoDeAniversario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pedidoDeAniversarioActionPerformed(evt);
+                checkBoxPedidoDeAniversarioActionPerformed(evt);
             }
         });
 
@@ -179,7 +188,7 @@ public class FazerPedido extends javax.swing.JFrame {
                     .addGroup(CheckoutLayout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pedidoDeAniversario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkBoxPedidoDeAniversario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(CheckoutLayout.createSequentialGroup()
                                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
@@ -190,7 +199,7 @@ public class FazerPedido extends javax.swing.JFrame {
             CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckoutLayout.createSequentialGroup()
                 .addContainerGap(174, Short.MAX_VALUE)
-                .addComponent(pedidoDeAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(checkBoxPedidoDeAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,9 +229,9 @@ public class FazerPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoFinalizarPedidoActionPerformed
 
-    private void pedidoDeAniversarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoDeAniversarioActionPerformed
+    private void checkBoxPedidoDeAniversarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxPedidoDeAniversarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pedidoDeAniversarioActionPerformed
+    }//GEN-LAST:event_checkBoxPedidoDeAniversarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,10 +277,10 @@ public class FazerPedido extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdicionarAoCarrinho;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoFinalizarPedido;
+    private javax.swing.JCheckBox checkBoxPedidoDeAniversario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label2;
-    private javax.swing.JCheckBox pedidoDeAniversario;
     private javax.swing.JTable tabelaCarrinho;
     private javax.swing.JTable tabelaProdutosDisponiveis;
     private java.awt.Label valorTotal;

@@ -124,20 +124,12 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixaActionPerformed
-        //if(listaFuncionario.size() == 0){
-            //JOptionPane.showMessageDialog(null,"Nenhum funcionário cadastrado ainda!","Mensagem",JOptionPane.PLAIN_MESSAGE);
-        //}else{    
+        if(listaFuncionario.size() == 0){
+            JOptionPane.showMessageDialog(null,"Nenhum funcionário cadastrado ainda!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        }else{    
             boolean achou = false;
-            //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-            String senha = "arthur";
-            Ingrediente in = new Ingrediente("Pão", 2);
-            Ingredientes.add(in);
-            Produto pro = new Produto(500, "hamburguer", Ingredientes);
-            ProdutosDisponiveis.add(pro);
-            Pedido p = new Pedido(ProdutosDisponiveis, "dinheiro", 500, true, 12321, true, true);
-            listaPedidos.add(p);
-            Caixa cai = new Caixa(listaPedidos,"arthur", 10, 1111, "jj", "20/10/2021");
-            listaFuncionario.add(cai);
+            String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+            
             if(listaPedidos.size() != 0){
             for(int i = 0; i<listaFuncionario.size();i++){
                  if(listaFuncionario.get(i) instanceof Caixa){
@@ -156,7 +148,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null,"A lista de pedidos ainda está vazia!","Mensagem",JOptionPane.PLAIN_MESSAGE);
             }
-        //}
+        }
     }//GEN-LAST:event_btnCaixaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -168,16 +160,8 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Nenhum funcionário cadastrado ainda!","Mensagem",JOptionPane.PLAIN_MESSAGE);
         }else{    
             boolean achou = false;
-            //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-            String senha = "arthur";
-            Ingrediente in = new Ingrediente("Pão", 2);
-            Ingredientes.add(in);
-            Produto pro = new Produto(500, "hamburguer", Ingredientes);
-            ProdutosDisponiveis.add(pro);
-            Pedido p = new Pedido(ProdutosDisponiveis, "cartão", 500, true, 12321, true, true);
-            listaPedidos.add(p);
-            Cozinheiro coz = new Cozinheiro(listaPedidos,"arthur", 10, 1111, "jj", "20/10/2021");
-            listaFuncionario.add(coz);
+            String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+            
             if(listaPedidos.size() != 0){
             for(int i = 0; i<listaFuncionario.size();i++){
                  if(listaFuncionario.get(i) instanceof Cozinheiro){

@@ -6,12 +6,11 @@ public class Produto {
 
     private float preco;
     private String nome;
-    private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<String> ingredientes;
 
-    public Produto(float preco, String nome, ArrayList<Ingrediente> ingredientes) {
+    public Produto(float preco, String nome) {
         this.preco = preco;
         this.nome = nome;
-        this.ingredientes = ingredientes;
     }
 
     public float getPreco() {
@@ -30,11 +29,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public ArrayList<Ingrediente> getIngredientes() {
+    public ArrayList<String> getIngredientes() {
         return ingredientes;
     }
 
-    public void incluirIngrediente(Ingrediente ingrediente) {
+    public void incluirIngrediente(String ingrediente) {
         this.ingredientes.add(ingrediente);
     }
 

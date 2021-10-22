@@ -8,12 +8,10 @@ package telas;
 import classes.Caixa;
 import classes.Cozinheiro;
 import classes.Funcionario;
-import classes.Ingrediente;
 import classes.Pedido;
 import classes.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import static telas.TelaInicial.Ingredientes;
 import static telas.TelaInicial.ProdutosDisponiveis;
 import static telas.TelaInicial.listaPedidos;
 
@@ -130,9 +128,8 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             boolean achou = false;
             //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
             String senha = "arthur";
-            Ingrediente in = new Ingrediente("Pão", 2);
-            Ingredientes.add(in);
-            Produto pro = new Produto(500, "hamburguer", Ingredientes);
+            Produto pro = new Produto(500, "hamburguer");
+			
             ProdutosDisponiveis.add(pro);
             Pedido p = new Pedido(ProdutosDisponiveis, "dinheiro", 500, true, 12321, true, true);
             listaPedidos.add(p);
@@ -170,9 +167,7 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
             boolean achou = false;
             //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
             String senha = "arthur";
-            Ingrediente in = new Ingrediente("Pão", 2);
-            Ingredientes.add(in);
-            Produto pro = new Produto(500, "hamburguer", Ingredientes);
+            Produto pro = new Produto(500, "hamburguer");
             ProdutosDisponiveis.add(pro);
             Pedido p = new Pedido(ProdutosDisponiveis, "cartão", 500, true, 12321, true, true);
             listaPedidos.add(p);

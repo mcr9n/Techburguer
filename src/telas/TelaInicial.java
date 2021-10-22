@@ -6,7 +6,6 @@
 package telas;
 
 import classes.Funcionario;
-import classes.Ingrediente;
 import classes.Pedido;
 import classes.Produto;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.Calendar;
 public class TelaInicial extends javax.swing.JFrame {
     static ArrayList<Pedido> listaPedidos;
     static ArrayList<Produto> ProdutosDisponiveis;
-    static ArrayList<Ingrediente> Ingredientes;
     static ArrayList<Funcionario> ListaFuncionario;
     private Calendar calendario;
 
@@ -30,7 +28,6 @@ public class TelaInicial extends javax.swing.JFrame {
         initComponents();
         listaPedidos = new ArrayList();
         ProdutosDisponiveis = new ArrayList();
-        Ingredientes = new ArrayList();
         ListaFuncionario = new ArrayList();
         setLocationRelativeTo(null);
         Calendar c = Calendar.getInstance();

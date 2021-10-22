@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Cozinheiro extends Funcionario {
 
     private ArrayList<Pedido> listaPedidos;
-
     public Cozinheiro(ArrayList<Pedido> listaPedidos, String senha, float salario, long cpf, String nome, String dataDeNascimento) {
         super(senha, salario, cpf, nome, dataDeNascimento);
         this.listaPedidos = listaPedidos;

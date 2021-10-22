@@ -5,6 +5,11 @@
  */
 package telas;
 
+import classes.Funcionario;
+import classes.Ingrediente;
+import classes.Pedido;
+import classes.Produto;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -12,7 +17,10 @@ import java.util.Calendar;
  * @author Marcelo Piano
  */
 public class TelaInicial extends javax.swing.JFrame {
-
+    static ArrayList<Pedido> listaPedidos;
+    static ArrayList<Produto> ProdutosDisponiveis;
+    static ArrayList<Ingrediente> Ingredientes;
+    static ArrayList<Funcionario> ListaFuncionario;
     private Calendar calendario;
 
     /**
@@ -20,6 +28,10 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        listaPedidos = new ArrayList();
+        ProdutosDisponiveis = new ArrayList();
+        Ingredientes = new ArrayList();
+        ListaFuncionario = new ArrayList();
         setLocationRelativeTo(null);
         Calendar c = Calendar.getInstance();
 
@@ -135,7 +147,6 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnFuncionarioTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioTelaInicialActionPerformed
         // TODO add your handling code here:
-        
         new CozinheiroeCaixa().setVisible(true);
     }//GEN-LAST:event_btnFuncionarioTelaInicialActionPerformed
 

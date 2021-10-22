@@ -4,6 +4,7 @@
  */
 package telas;
 
+import classes.Pedido;
 import classes.Produto;
 import java.util.ArrayList;
 
@@ -12,7 +13,6 @@ import java.util.ArrayList;
  * @author dapedu
  */
 public class FazerPedido extends javax.swing.JFrame {
-    public ArrayList<Produto> produtosDisponiveis;
     private boolean pedidoDeAniversario;
     
     
@@ -21,8 +21,7 @@ public class FazerPedido extends javax.swing.JFrame {
     /**
      * Creates new form ProdutosDisponíveis
      */
-    public FazerPedido() {
-        this.produtosDisponiveis = new ArrayList();   
+    public FazerPedido() {   
         initComponents();
     }
 

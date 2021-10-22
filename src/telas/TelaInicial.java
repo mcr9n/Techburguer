@@ -63,8 +63,18 @@ public class TelaInicial extends javax.swing.JFrame {
         lblEscolhaPerfilTelainicial.setText("Escolha o Perfil desse despositivo:");
 
         btnGerenteTelaInicial.setText("Gerente");
+        btnGerenteTelaInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenteTelaInicialActionPerformed(evt);
+            }
+        });
 
         btnFuncionarioTelaInicial.setText("Funcionário");
+        btnFuncionarioTelaInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionarioTelaInicialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +127,18 @@ public class TelaInicial extends javax.swing.JFrame {
         CadastroCliente telaCliente = new CadastroCliente();
         telaCliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnGerenteTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteTelaInicialActionPerformed
+        // TODO add your handling code here:
+        
+        new LoginGerente().setVisible(true);
+    }//GEN-LAST:event_btnGerenteTelaInicialActionPerformed
+
+    private void btnFuncionarioTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioTelaInicialActionPerformed
+        // TODO add your handling code here:
+        
+        new CozinheiroeCaixa().setVisible(true);
+    }//GEN-LAST:event_btnFuncionarioTelaInicialActionPerformed
 
     /**
      * @param args the command line arguments

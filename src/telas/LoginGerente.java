@@ -141,6 +141,7 @@ public class LoginGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtSenhaLoginGerente.getText().equals("senha")){
             new GerenteEscolha().setVisible(true);
+            this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null, "Senha incorreta!", "Aviso", JOptionPane.PLAIN_MESSAGE);

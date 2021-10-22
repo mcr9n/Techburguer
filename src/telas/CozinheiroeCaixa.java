@@ -8,20 +8,27 @@ package telas;
 import classes.Caixa;
 import classes.Cozinheiro;
 import classes.Funcionario;
+import classes.Ingrediente;
+import classes.Pedido;
+import classes.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static telas.TelaInicial.Ingredientes;
+import static telas.TelaInicial.ProdutosDisponiveis;
+import static telas.TelaInicial.listaPedidos;
 
 /**
  *
  * @author 144fps
  */
 public class CozinheiroeCaixa extends javax.swing.JFrame {
-    public static ArrayList<Funcionario> funcionarios;
+    public static ArrayList<Funcionario> listaFuncionario;
 
     /**
      * Creates new form CozinheiroeCaixa
      */
     public CozinheiroeCaixa() {
+        listaFuncionario = new ArrayList();
         initComponents();
     }
 
@@ -117,23 +124,39 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixaActionPerformed
-        boolean achou = false;
-        String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-        for(int i = 0; i<funcionarios.size();i++){
-             if(funcionarios.get(i) instanceof Caixa){
-                 Caixa k = (Caixa)funcionarios.get(i);
-                 if(senha.equals(k.getSenha())){
-                     new PedidosEmDinheiro().setVisible(true);
-                     achou = true;
-                 
+        //if(listaFuncionario.size() == 0){
+            //JOptionPane.showMessageDialog(null,"Nenhum funcionário cadastrado ainda!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        //}else{    
+            boolean achou = false;
+            //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+            String senha = "arthur";
+            Ingrediente in = new Ingrediente("Pão", 2);
+            Ingredientes.add(in);
+            Produto pro = new Produto(500, "hamburguer", Ingredientes);
+            ProdutosDisponiveis.add(pro);
+            Pedido p = new Pedido(ProdutosDisponiveis, "dinheiro", 500, true, 12321, true, true);
+            listaPedidos.add(p);
+            Caixa cai = new Caixa(listaPedidos,"arthur", 10, 1111, "jj", "20/10/2021");
+            listaFuncionario.add(cai);
+            if(listaPedidos.size() != 0){
+            for(int i = 0; i<listaFuncionario.size();i++){
+                 if(listaFuncionario.get(i) instanceof Caixa){
+                     Caixa c = (Caixa)listaFuncionario.get(i);
+                     if(senha.equals(c.getSenha())){
+                         new PedidosEmDinheiro().setVisible(true);
+                         achou = true;
+
+                     }
+
                  }
-             
-             
-             }
-        }
-        if(!achou){
-            JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um caixa!","Mensagem",JOptionPane.PLAIN_MESSAGE);
-        }
+                 }
+            if(!achou){
+                JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um caixa!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+            }
+            }else{
+                JOptionPane.showMessageDialog(null,"A lista de pedidos ainda está vazia!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+            }
+        //}
     }//GEN-LAST:event_btnCaixaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -141,22 +164,38 @@ public class CozinheiroeCaixa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCozinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCozinheiroActionPerformed
-        boolean achou = false;
-        String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
-        for(int i = 0; i<funcionarios.size();i++){
-             if(funcionarios.get(i) instanceof Cozinheiro){
-                 Cozinheiro c = (Cozinheiro)funcionarios.get(i);
-                 if(senha.equals(c.getSenha())){
-                     new ListaDePedidos().setVisible(true);
-                     achou = true;
-                 
+        if(listaFuncionario.size() == 0){
+            JOptionPane.showMessageDialog(null,"Nenhum funcionário cadastrado ainda!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        }else{    
+            boolean achou = false;
+            //String senha = JOptionPane.showInputDialog("Informe sua senha de funcionário:");
+            String senha = "arthur";
+            Ingrediente in = new Ingrediente("Pão", 2);
+            Ingredientes.add(in);
+            Produto pro = new Produto(500, "hamburguer", Ingredientes);
+            ProdutosDisponiveis.add(pro);
+            Pedido p = new Pedido(ProdutosDisponiveis, "cartão", 500, true, 12321, true, true);
+            listaPedidos.add(p);
+            Cozinheiro coz = new Cozinheiro(listaPedidos,"arthur", 10, 1111, "jj", "20/10/2021");
+            listaFuncionario.add(coz);
+            if(listaPedidos.size() != 0){
+            for(int i = 0; i<listaFuncionario.size();i++){
+                 if(listaFuncionario.get(i) instanceof Cozinheiro){
+                     Cozinheiro c = (Cozinheiro)listaFuncionario.get(i);
+                     if(senha.equals(c.getSenha())){
+                         new ListaDePedidos().setVisible(true);
+                         achou = true;
+
+                     }
+
                  }
-             
-             
-             }
-        }
-        if(!achou){
-            JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um cozinheiro!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+                 }
+            if(!achou){
+                JOptionPane.showMessageDialog(null,"A senha informada não corresponde a um cozinheiro!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+            }
+            }else{
+                JOptionPane.showMessageDialog(null,"A lista de pedidos ainda está vazia!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnCozinheiroActionPerformed
 

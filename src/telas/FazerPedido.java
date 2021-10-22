@@ -4,6 +4,7 @@
  */
 package telas;
 
+import classes.Pedido;
 import classes.Produto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;

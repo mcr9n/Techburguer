@@ -7,7 +7,7 @@ package telas;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static telas.ListaDePedidos.listaPedidos;
+import static telas.TelaInicial.listaPedidos;
 
 /**
  *

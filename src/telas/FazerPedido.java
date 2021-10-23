@@ -33,10 +33,10 @@ public class FazerPedido extends javax.swing.JFrame {
 		pedidoDeAniversario = false;
 		initComponents();
                 if(clienteAtual.isJaFezPedidoAniversario()){
-                    checkBoxPedidoDeAniversario1.setEnabled(true);
+                    checkBoxPedidoDeAniversario1.setEnabled(false);
                 
                 }else{
-                    checkBoxPedidoDeAniversario1.setEnabled(false);
+                    checkBoxPedidoDeAniversario1.setEnabled(true);
                 
                 }
 

@@ -58,4 +58,9 @@ public class Cliente extends Pessoa {
         return false;
     }
 
+    public boolean isJaFezPedidoAniversario() {
+        return jaFezPedidoAniversario;
+    }
+    
+
 }

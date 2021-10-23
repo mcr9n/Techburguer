@@ -6,9 +6,11 @@
 package telas;
 
 import classes.Ingrediente;
+import classes.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static telas.TelaInicial.ProdutosDisponiveis;
 
 /**
  *
@@ -16,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Estoque extends javax.swing.JFrame {
     
-    static ArrayList<Ingrediente> listaIngredientes;
+    
     
     String botao_apertado;
     
@@ -27,7 +29,6 @@ public class Estoque extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        listaIngredientes = new ArrayList();
         
         //Habilitar ou desabilitar botoes:
         btnNovoEstoque.setEnabled(true);
@@ -41,7 +42,7 @@ public class Estoque extends javax.swing.JFrame {
         //Habilitar ou desabilitar campos de texto:
         txtNomeEstoque.setEnabled(false);
         txtQuantidadeEstoque.setEnabled(false);
-        
+        txtPreco.setEnabled(false);
     }
 
     /**
@@ -60,6 +61,8 @@ public class Estoque extends javax.swing.JFrame {
         lblQuantidadeEstoque = new javax.swing.JLabel();
         txtQuantidadeEstoque = new javax.swing.JTextField();
         btnOKEstoque = new javax.swing.JButton();
+        lblPreco = new javax.swing.JLabel();
+        txtPreco = new javax.swing.JTextField();
         scrlpnlEstoque = new javax.swing.JScrollPane();
         tblEstoque = new javax.swing.JTable();
         btnNovoEstoque = new javax.swing.JButton();
@@ -86,6 +89,8 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        lblPreco.setText("Preço:");
+
         javax.swing.GroupLayout pnlEstoqueLayout = new javax.swing.GroupLayout(pnlEstoque);
         pnlEstoque.setLayout(pnlEstoqueLayout);
         pnlEstoqueLayout.setHorizontalGroup(
@@ -93,18 +98,23 @@ public class Estoque extends javax.swing.JFrame {
             .addGroup(pnlEstoqueLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEstoqueLayout.createSequentialGroup()
+                        .addComponent(lblPreco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblEstoqueEstoque)
                     .addGroup(pnlEstoqueLayout.createSequentialGroup()
                         .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblQuantidadeEstoque)
                             .addComponent(lblNomeEstoque))
                         .addGap(18, 18, 18)
-                        .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomeEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtQuantidadeEstoque))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnOKEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEstoqueLayout.createSequentialGroup()
+                                .addComponent(txtNomeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnOKEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQuantidadeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         pnlEstoqueLayout.setVerticalGroup(
             pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,22 +130,26 @@ public class Estoque extends javax.swing.JFrame {
                 .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblQuantidadeEstoque)
                     .addComponent(txtQuantidadeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPreco)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "Quantidade"
+                "Nome", "Quantidade", "Preço"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -215,34 +229,36 @@ public class Estoque extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(scrlpnlEstoque)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(247, 247, 247)
                         .addComponent(btnSairEstoque)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrlpnlEstoque)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovoEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSalvarEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelarEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditarEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluirEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPesquisarEstoque)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnNovoEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelarEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditarEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluirEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPesquisarEstoque)
-                .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -253,8 +269,8 @@ public class Estoque extends javax.swing.JFrame {
                     .addComponent(btnExcluirEstoque)
                     .addComponent(btnPesquisarEstoque))
                 .addGap(18, 18, 18)
-                .addComponent(scrlpnlEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrlpnlEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSairEstoque)
                 .addContainerGap())
         );
@@ -263,11 +279,12 @@ public class Estoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void carregarTabelaIngredientes() {
-        DefaultTableModel modelo = new DefaultTableModel(new Object[] {"Nome","Quantidade"},0);
+        DefaultTableModel modelo = new DefaultTableModel(new Object[] {"Nome","Quantidade", "Preço"},0);
         
-        for(int i = 0; i < listaIngredientes.size(); i++){
-            Object linha[] = new Object[]{listaIngredientes.get(i).getNome(),
-                                          listaIngredientes.get(i).getQuantidade(),};
+        for(int i = 0; i < ProdutosDisponiveis.size(); i++){
+            Object linha[] = new Object[]{ProdutosDisponiveis.get(i).getNome(),
+                                          ProdutosDisponiveis.get(i).getQuantidade(),
+                                          ProdutosDisponiveis.get(i).getPreco()};
             modelo.addRow(linha);
         }
         
@@ -302,7 +319,7 @@ public class Estoque extends javax.swing.JFrame {
         //Habilitar ou desabilitar campos de texto:
         txtNomeEstoque.setEnabled(true);
         txtQuantidadeEstoque.setEnabled(true);
-        
+        txtPreco.setEnabled(true);
         //Requisitar foco no primeiro txt:
         txtNomeEstoque.requestFocus();
     }//GEN-LAST:event_btnNovoEstoqueActionPerformed
@@ -322,38 +339,42 @@ public class Estoque extends javax.swing.JFrame {
         //Habilitar ou desabilitar campos de texto:
         txtNomeEstoque.setEnabled(false);
         txtQuantidadeEstoque.setEnabled(false);
+        txtPreco.setEnabled(false);
     }//GEN-LAST:event_btnCancelarEstoqueActionPerformed
 
     private void btnSalvarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstoqueActionPerformed
         // TODO add your handling code here:
         
         if(txtNomeEstoque.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Digite o nome do ingrediente!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Digite o nome do produto!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
             txtNomeEstoque.requestFocus();
         }
         else if(txtQuantidadeEstoque.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Digite a quantidade do ingrediente!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Digite a quantidade do produto!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+            txtQuantidadeEstoque.requestFocus();
+        }else if(txtPreco.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Digite o preço do produto!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
             txtQuantidadeEstoque.requestFocus();
         }
-        
         else{
             
             String nomeIngrediente = txtNomeEstoque.getText();
             int quantidadeIngrediente = Integer.parseInt(txtQuantidadeEstoque.getText());
-            
+            float precoProduto = Float.parseFloat(txtPreco.getText());
             if(botao_apertado.equals("novo")){
-                Ingrediente ingrediente = new Ingrediente(nomeIngrediente, quantidadeIngrediente);
+                Produto prod = new Produto(precoProduto, nomeIngrediente, quantidadeIngrediente);
                 
-                listaIngredientes.add(ingrediente);
+                ProdutosDisponiveis.add(prod);
                 
-                JOptionPane.showMessageDialog(null, "Ingrediente cadastrado com sucesso!", "Aviso", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Aviso", JOptionPane.PLAIN_MESSAGE);
             }
             
             else if(botao_apertado.equals("editar")){
                 int index_tabela = tblEstoque.getSelectedRow();
                 
-                listaIngredientes.get(index_tabela).setNome(nomeIngrediente);
-                listaIngredientes.get(index_tabela).setQuantidade(quantidadeIngrediente);
+                ProdutosDisponiveis.get(index_tabela).setNome(nomeIngrediente);
+                ProdutosDisponiveis.get(index_tabela).setQuantidade(quantidadeIngrediente);
+                ProdutosDisponiveis.get(index_tabela).setPreco(precoProduto);
             }
             
             //Carregar os dados do Ingrediente na tabela:
@@ -362,6 +383,7 @@ public class Estoque extends javax.swing.JFrame {
             //Limpar campos de texto:
             txtNomeEstoque.setText("");
             txtQuantidadeEstoque.setText("");
+            txtPreco.setText("");
             
             //Habilitar ou desabilitar botoes:
             btnNovoEstoque.setEnabled(true);
@@ -375,6 +397,7 @@ public class Estoque extends javax.swing.JFrame {
             //Habilitar ou desabilitar campos de texto:
             txtNomeEstoque.setEnabled(false);
             txtQuantidadeEstoque.setEnabled(false);
+            txtPreco.setEnabled(false);
             
         }
         
@@ -396,6 +419,7 @@ public class Estoque extends javax.swing.JFrame {
         //Habilitar ou desabilitar campos de texto:
         txtNomeEstoque.setEnabled(true);
         txtQuantidadeEstoque.setEnabled(true);
+        txtPreco.setEnabled(true);
         
         //Focar na primeira caixa de texto
         txtNomeEstoque.requestFocus();
@@ -406,8 +430,8 @@ public class Estoque extends javax.swing.JFrame {
         
         int index_tabela = tblEstoque.getSelectedRow();
         
-        if(index_tabela >= 0 && index_tabela < listaIngredientes.size()){
-        listaIngredientes.remove(index_tabela);
+        if(index_tabela >= 0 && index_tabela < ProdutosDisponiveis.size()){
+        ProdutosDisponiveis.remove(index_tabela);
         }
         
         //Carregar os dados do Ingrediente na tabela:
@@ -416,6 +440,7 @@ public class Estoque extends javax.swing.JFrame {
         //Limpar campos de texto:
         txtNomeEstoque.setText("");
         txtQuantidadeEstoque.setText("");
+        txtPreco.setText("");
 
         //Habilitar ou desabilitar botoes:
         btnNovoEstoque.setEnabled(true);
@@ -429,6 +454,7 @@ public class Estoque extends javax.swing.JFrame {
         //Habilitar ou desabilitar campos de texto:
         txtNomeEstoque.setEnabled(false);
         txtQuantidadeEstoque.setEnabled(false);
+        txtPreco.setEnabled(false);
         
         
     }//GEN-LAST:event_btnExcluirEstoqueActionPerformed
@@ -436,8 +462,8 @@ public class Estoque extends javax.swing.JFrame {
     private void btnPesquisarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarEstoqueActionPerformed
         // TODO add your handling code here:
         
-        if(listaIngredientes.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nenhum ingreduente cadastrado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+        if(ProdutosDisponiveis.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
         }
         
         else{
@@ -453,6 +479,8 @@ public class Estoque extends javax.swing.JFrame {
             //Habilitar ou desabilitar campos de texto:
             txtNomeEstoque.setEnabled(true);
             txtQuantidadeEstoque.setEnabled(false);
+            txtPreco.setEnabled(false);
+            
 
             txtNomeEstoque.requestFocus();
         }
@@ -462,36 +490,40 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if(txtNomeEstoque.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "O Nome do ingrediente deve ser informado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O Nome do produto deve ser informado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
         }
         
         else{
-            Ingrediente ing;
+            Produto ing;
             
             String nome = "", quantidade = "";
+            float preco = 0;
             
             String nomePesquisado = txtNomeEstoque.getText();
             
-            for(int i = 0; i < listaIngredientes.size(); i++){
-                ing = listaIngredientes.get(i);
+            for(int i = 0; i < ProdutosDisponiveis.size(); i++){
+                ing = ProdutosDisponiveis.get(i);
                 
                 if(nomePesquisado.equals(ing.getNome())){
                     nome = ing.getNome();
                     quantidade = String.valueOf(ing.getQuantidade());
+                    preco = ing.getPreco();
                 }
             }
             
             if(nome.equals("")){
-                JOptionPane.showMessageDialog(null, "Este ingrediente não está no sistema!", "Aviso", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Este produto não está no sistema!", "Aviso", JOptionPane.PLAIN_MESSAGE);
                 
                 //Limpar campos de texto:
                 txtNomeEstoque.setText("");
                 txtQuantidadeEstoque.setText("");
+                txtPreco.setText("");
             }
             
             else{
                 txtNomeEstoque.setText(nome);
                 txtQuantidadeEstoque.setText(quantidade);
+                txtPreco.setText(String.valueOf(preco));
             }
             
             txtNomeEstoque.selectAll();
@@ -507,12 +539,12 @@ public class Estoque extends javax.swing.JFrame {
         int indiceLinha = tblEstoque.getSelectedRow();
         
         //verificar se a linha é válida:
-        if(indiceLinha >= 0 && indiceLinha < listaIngredientes.size()){
-            Ingrediente ing = listaIngredientes.get(indiceLinha);
+        if(indiceLinha >= 0 && indiceLinha < ProdutosDisponiveis.size()){
+            Produto ing = ProdutosDisponiveis.get(indiceLinha);
             
             txtNomeEstoque.setText(ing.getNome());
             txtQuantidadeEstoque.setText(String.valueOf(ing.getQuantidade()));
-            
+            txtPreco.setText(String.valueOf(ing.getPreco()));
             //Habilitar ou desabilitar botoes:
             btnNovoEstoque.setEnabled(false);
             btnSalvarEstoque.setEnabled(false);
@@ -525,6 +557,7 @@ public class Estoque extends javax.swing.JFrame {
             //Habilitar ou desabilitar campos de texto:
             txtNomeEstoque.setEnabled(false);
             txtQuantidadeEstoque.setEnabled(false);
+            txtPreco.setEnabled(false);
        
         }
     }//GEN-LAST:event_tblEstoqueMouseClicked
@@ -575,11 +608,13 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarEstoque;
     private javax.swing.JLabel lblEstoqueEstoque;
     private javax.swing.JLabel lblNomeEstoque;
+    private javax.swing.JLabel lblPreco;
     private javax.swing.JLabel lblQuantidadeEstoque;
     private javax.swing.JPanel pnlEstoque;
     private javax.swing.JScrollPane scrlpnlEstoque;
     private javax.swing.JTable tblEstoque;
     private javax.swing.JTextField txtNomeEstoque;
+    private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidadeEstoque;
     // End of variables declaration//GEN-END:variables
 }

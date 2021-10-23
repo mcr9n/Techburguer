@@ -6,11 +6,27 @@ public class Produto {
 	
     private float preco;
     private String nome;
-
+    private int quantidade;
 	public Produto(float preco, String nome) {
         this.preco = preco;
 		this.nome = nome;
     }
+
+    public Produto(float preco, String nome, int quantidade) {
+        this.preco = preco;
+        this.nome = nome;
+        this.quantidade = quantidade;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+        
+        
 
     public float getPreco() {
         return preco;

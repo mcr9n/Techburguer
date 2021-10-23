@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static telas.CadastroCliente.clienteAtual;
+import static telas.TelaInicial.ProdutosDisponiveis;
 import static telas.TelaInicial.listaPedidos;
 
 /**
@@ -18,8 +20,6 @@ import static telas.TelaInicial.listaPedidos;
  * @author dapedu
  */
 public class FazerPedido extends javax.swing.JFrame {
-
-	public ArrayList<Produto> produtosDisponiveis;
 	public ArrayList<Produto> carrinho;
 	public float valorTotal;
 	private boolean pedidoDeAniversario;
@@ -28,15 +28,19 @@ public class FazerPedido extends javax.swing.JFrame {
 	 * Creates new form ProdutosDisponíveis
 	 */
 	public FazerPedido() {
-		produtosDisponiveis = new ArrayList<Produto>();
-		carrinho = new ArrayList<Produto>();
 
-		produtosDisponiveis.add(new Produto(11, "Hamburguer"));
-		produtosDisponiveis.add(new Produto(6, "Batata"));
+		carrinho = new ArrayList<Produto>();
 		pedidoDeAniversario = false;
 		initComponents();
+                if(clienteAtual.isJaFezPedidoAniversario()){
+                    checkBoxPedidoDeAniversario1.setEnabled(true);
+                
+                }else{
+                    checkBoxPedidoDeAniversario1.setEnabled(false);
+                
+                }
 
-		atualizaTabelaProdutosDisponiveis(produtosDisponiveis);
+		atualizaTabelaProdutosDisponiveis(ProdutosDisponiveis);
 	}
 
 	/**
@@ -302,8 +306,15 @@ public class FazerPedido extends javax.swing.JFrame {
 			return;
 		}
 		
-		
-		listaPedidos.add(new Pedido(carrinho, formaDePagamento, valorTotal, pedidoDeAniversario, rand.nextInt(1000), false, false));
+		Pedido p = new Pedido(carrinho, formaDePagamento, valorTotal, pedidoDeAniversario, rand.nextInt(1000), false, false);
+                if(p.getFormaDePagamento()=="Cartão de Crédito"){
+                    p.setPago(true);
+                }
+                
+		listaPedidos.add(p);
+                JOptionPane.showMessageDialog(null, "O seu pedido foi realizado com sucesso!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+                carrinho.clear();
+                atualizaTabelaCarrinho(carrinho);
     }//GEN-LAST:event_botaoFinalizarPedidoActionPerformed
 
     private void botaoAdicionarAoCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarAoCarrinhoActionPerformed
@@ -312,10 +323,18 @@ public class FazerPedido extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Selecione um produto na lista para adicionar", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
+		if(ProdutosDisponiveis.get(linha).getQuantidade() != 0){
+                    carrinho.add(ProdutosDisponiveis.get(linha));
+		    atualizaTabelaCarrinho(carrinho);
+		    atualizaPreco(carrinho);
+                    ProdutosDisponiveis.get(linha).setQuantidade(ProdutosDisponiveis.get(linha).getQuantidade()-1);
+                
+                }else{
+                
+                    JOptionPane.showMessageDialog(null, "Produto fora de estoque!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+                
+                }
 		
-		carrinho.add(produtosDisponiveis.get(linha));
-		atualizaTabelaCarrinho(carrinho);
-		atualizaPreco(carrinho);
     }//GEN-LAST:event_botaoAdicionarAoCarrinhoActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
@@ -339,7 +358,7 @@ public class FazerPedido extends javax.swing.JFrame {
 	private void atualizaTabelaProdutosDisponiveis(ArrayList<Produto> produtosDisponiveis) {
 		DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"Nome", "Preço (R$)"}, 0);
 
-		for (Produto produto : produtosDisponiveis) {
+		for (Produto produto : ProdutosDisponiveis) {
 			tableModel.addRow(new Object[]{produto.getNome(), produto.getPreco()});
 		}
 

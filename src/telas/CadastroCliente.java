@@ -7,6 +7,7 @@ package telas;
 
 import classes.Cliente;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -148,6 +149,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         
         long cpf =  Long.parseLong(this.cpfTextField.getText());
         String name = this.nameTextField.getText();
+        
         String dataDeNascimento = this.dataDeNascimentoTextField.getText();
         
         if (clienteExiste(cpf, clientes)) {
@@ -156,6 +158,8 @@ public class CadastroCliente extends javax.swing.JFrame {
 	   clienteAtual = new Cliente(cpf, name, dataDeNascimento);
 	   clientes.add(clienteAtual);
         }
+        
+        
 
 	// Proxima pagina
 	FazerPedido telaFazerPedido = new FazerPedido();

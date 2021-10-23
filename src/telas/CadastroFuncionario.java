@@ -12,7 +12,7 @@ import classes.Pedido;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static telas.CozinheiroeCaixa.listaFuncionario;
+import static telas.TelaInicial.ListaFuncionario;
 import static telas.TelaInicial.listaPedidos;
 
 
@@ -56,13 +56,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public void carregarTabelaFuncionarios() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Cpf", "Nome", "Data de Nascimento", "Senha funcionário", "Salário", "Ocupação"}, 0);
 
-        for (int i = 0; i < listaFuncionario.size(); i++) {
-            Object linha[] = new Object[]{listaFuncionario.get(i).getCpf(),
-                listaFuncionario.get(i).getNome(),
-                listaFuncionario.get(i).getDataDeNascimento(),
-                listaFuncionario.get(i).getSenha(),
-                listaFuncionario.get(i).getSalario(),
-                listaFuncionario.get(i).getOcupacao()};
+        for (int i = 0; i < ListaFuncionario.size(); i++) {
+            Object linha[] = new Object[]{ListaFuncionario.get(i).getCpf(),
+                ListaFuncionario.get(i).getNome(),
+                ListaFuncionario.get(i).getDataDeNascimento(),
+                ListaFuncionario.get(i).getSenha(),
+                ListaFuncionario.get(i).getSalario(),
+                ListaFuncionario.get(i).getOcupacao()};
             modelo.addRow(linha);
         }
 
@@ -421,7 +421,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     
                     cozinheiro.setOcupacao("Cozinheiro");
                     
-                    listaFuncionario.add(cozinheiro);
+                    ListaFuncionario.add(cozinheiro);
 
                     JOptionPane.showMessageDialog(null, "Cozinheiro adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
                 } 
@@ -430,7 +430,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     
                     caixa.setOcupacao("Caixa");
                     
-                    listaFuncionario.add(caixa);
+                    ListaFuncionario.add(caixa);
 
                     JOptionPane.showMessageDialog(null, "Caixa adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
                 }
@@ -439,11 +439,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             else if (botao_apertado.equals("editar")) {
                 int indexLinhaSelecionada = tblFuncionariosCadastroFuncionario.getSelectedRow();
 
-                listaFuncionario.get(indexLinhaSelecionada).setCpf(cpf);
-                listaFuncionario.get(indexLinhaSelecionada).setNome(nome);
-                listaFuncionario.get(indexLinhaSelecionada).setDataDeNascimento(dataNascimento);
-                listaFuncionario.get(indexLinhaSelecionada).setSenha(senha);
-                listaFuncionario.get(indexLinhaSelecionada).setSalario(salario);
+               ListaFuncionario.get(indexLinhaSelecionada).setCpf(cpf);
+                ListaFuncionario.get(indexLinhaSelecionada).setNome(nome);
+                ListaFuncionario.get(indexLinhaSelecionada).setDataDeNascimento(dataNascimento);
+                ListaFuncionario.get(indexLinhaSelecionada).setSenha(senha);
+                ListaFuncionario.get(indexLinhaSelecionada).setSalario(salario);
             }
 
             //Limpar os textos:
@@ -540,8 +540,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         int indexLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
 
         //Verificar se a linha é valida:
-        if (indexLinha >= 0 && indexLinha < listaFuncionario.size()) {
-            listaFuncionario.remove(indexLinha);
+        if (indexLinha >= 0 && indexLinha < ListaFuncionario.size()) {
+            ListaFuncionario.remove(indexLinha);
         }
 
         //carregar tabela:
@@ -581,7 +581,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void btnPesquisarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCadastroFuncionarioActionPerformed
         // TODO add your handling code here:
         
-        if(listaFuncionario.isEmpty()){
+        if(ListaFuncionario.isEmpty()){
             JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
         }
         
@@ -622,8 +622,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             
             long cpfPesquisado = Long.parseLong(txtCpfCadastroFuncionario.getText());
             
-            for(int i = 0; i < listaFuncionario.size(); i++){
-                fun = listaFuncionario.get(i);
+            for(int i = 0; i < ListaFuncionario.size(); i++){
+                fun = ListaFuncionario.get(i);
                 
                 if(cpfPesquisado == fun.getCpf()){
                     cpf = String.valueOf(fun.getCpf());
@@ -675,9 +675,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         int indiceLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
         
         //Verificar se o índice é válido:
-        if(indiceLinha >= 0 && indiceLinha < listaFuncionario.size()){
+        if(indiceLinha >= 0 && indiceLinha < ListaFuncionario.size()){
             
-            Funcionario fun = listaFuncionario.get(indiceLinha);
+            Funcionario fun = ListaFuncionario.get(indiceLinha);
             txtCpfCadastroFuncionario.setText(String.valueOf(fun.getCpf()));
             txtNomeCadastroFuncionario.setText(fun.getNome());
             txtDataNascimentoCadastroFuncionario.setText(fun.getDataDeNascimento());

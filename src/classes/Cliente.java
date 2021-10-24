@@ -5,62 +5,62 @@ import java.util.Calendar;
 
 public class Cliente extends Pessoa {
 
-    private ArrayList<Pedido> pedidos;
-    private boolean fazAniversario;
-    private boolean jaFezPedidoAniversario;
+	private ArrayList<Pedido> pedidos;
+	private boolean fazAniversario;
+	private boolean jaFezPedidoAniversario;
 
-    public Cliente(long cpf, String nome, String dataDeNascimento) {
-        super(cpf, nome, dataDeNascimento);
-        String[] data_nascimento = dataDeNascimento.split("/");
-        Calendar c = Calendar.getInstance();
-        this.pedidos = new ArrayList<Pedido>();
-        
-        // TODO: Pegar a data de hoje corretamente
-        if (c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(data_nascimento[0]) && (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1])) {
-            fazAniversario = true;
+	public Cliente(String cpf, String nome, String dataDeNascimento) {
+		super(cpf, nome, dataDeNascimento);
+		String[] data_nascimento = dataDeNascimento.split("/");
+		Calendar c = Calendar.getInstance();
+		this.pedidos = new ArrayList<Pedido>();
 
-        } else {
-            fazAniversario = false;
-        }
+		// TODO: Pegar a data de hoje corretamente
+		if (c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(data_nascimento[0]) && (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1])) {
+			fazAniversario = true;
 
-        if (checarAniversario()) {
+		} else {
+			fazAniversario = false;
+		}
 
-            jaFezPedidoAniversario = true;
-        } else {
-            jaFezPedidoAniversario = false;
+		if (checarAniversario()) {
 
-        }
+			jaFezPedidoAniversario = true;
+		} else {
+			jaFezPedidoAniversario = false;
 
-    }
+		}
 
-    public void pagar() {
-        for (int i = 0; i < pedidos.size(); i++) {
-            if (pedidos.get(i).isPago() != true) {
-                pedidos.get(i).setPago(true);
-            }
+	}
 
-        }
-    }
+	public void pagar() {
+		for (int i = 0; i < pedidos.size(); i++) {
+			if (pedidos.get(i).isPago() != true) {
+				pedidos.get(i).setPago(true);
+			}
 
-    public void zerarQuantidadeDePedidos() {
-        pedidos.clear();
+		}
+	}
 
-    }
+	public void zerarQuantidadeDePedidos() {
+		pedidos.clear();
 
-    public boolean checarAniversario() {
-        if (fazAniversario == true) {
-            for (int i = 0; i < pedidos.size(); i++) {
-                if (pedidos.get(i).isDeAniversariante()) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        return false;
-    }
+	}
 
-    public boolean isJaFezPedidoAniversario() {
-        return jaFezPedidoAniversario;
-    }
+	public boolean checarAniversario() {
+		if (fazAniversario == true) {
+			for (int i = 0; i < pedidos.size(); i++) {
+				if (pedidos.get(i).isDeAniversariante()) {
+					return true;
+				}
+			}
+			return false;
+		}
+		return false;
+	}
+
+	public boolean isJaFezPedidoAniversario() {
+		return jaFezPedidoAniversario;
+	}
 
 }

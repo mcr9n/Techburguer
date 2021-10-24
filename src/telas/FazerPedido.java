@@ -20,6 +20,7 @@ import static telas.TelaInicial.listaPedidos;
  * @author dapedu
  */
 public class FazerPedido extends javax.swing.JFrame {
+
 	public ArrayList<Produto> carrinho;
 	public float valorTotal;
 	private boolean pedidoDeAniversario;
@@ -32,13 +33,13 @@ public class FazerPedido extends javax.swing.JFrame {
 		carrinho = new ArrayList<Produto>();
 		pedidoDeAniversario = false;
 		initComponents();
-                if(clienteAtual.isJaFezPedidoAniversario()){
-                    checkBoxPedidoDeAniversario1.setEnabled(false);
-                
-                }else{
-                    checkBoxPedidoDeAniversario1.setEnabled(true);
-                
-                }
+		if (clienteAtual.isJaFezPedidoAniversario()) {
+			checkBoxPedidoDeAniversario1.setEnabled(false);
+
+		} else {
+			checkBoxPedidoDeAniversario1.setEnabled(true);
+
+		}
 
 		atualizaTabelaProdutosDisponiveis(ProdutosDisponiveis);
 	}
@@ -294,27 +295,27 @@ public class FazerPedido extends javax.swing.JFrame {
 
     private void botaoFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFinalizarPedidoActionPerformed
 		Random rand = new Random();
-		String formaDePagamento = String.valueOf(this.formaDePagamento.getSelectedItem()) ;
-		
+		String formaDePagamento = String.valueOf(this.formaDePagamento.getSelectedItem());
+
 		if (formaDePagamento.equals("Selecione a forma de pagamento")) {
 			JOptionPane.showMessageDialog(null, "Selecione uma forma de pagamento", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
-		
+
 		if (carrinho.size() == 0) {
 			JOptionPane.showMessageDialog(null, "O seu carrinho está vazio", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
-		
+
 		Pedido p = new Pedido(carrinho, formaDePagamento, valorTotal, pedidoDeAniversario, rand.nextInt(1000), false, false);
-                if(p.getFormaDePagamento()=="Cartão de Crédito"){
-                    p.setPago(true);
-                }
-                
+		if (p.getFormaDePagamento() == "Cartão de Crédito") {
+			p.setPago(true);
+		}
+
 		listaPedidos.add(p);
-                JOptionPane.showMessageDialog(null, "O seu pedido foi realizado com sucesso!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
-                carrinho.clear();
-                atualizaTabelaCarrinho(carrinho);
+		JOptionPane.showMessageDialog(null, "O seu pedido foi realizado com sucesso!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+		carrinho.clear();
+		atualizaTabelaCarrinho(carrinho);
     }//GEN-LAST:event_botaoFinalizarPedidoActionPerformed
 
     private void botaoAdicionarAoCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarAoCarrinhoActionPerformed
@@ -323,18 +324,18 @@ public class FazerPedido extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Selecione um produto na lista para adicionar", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
-		if(ProdutosDisponiveis.get(linha).getQuantidade() != 0){
-                    carrinho.add(ProdutosDisponiveis.get(linha));
-		    atualizaTabelaCarrinho(carrinho);
-		    atualizaPreco(carrinho);
-                    ProdutosDisponiveis.get(linha).setQuantidade(ProdutosDisponiveis.get(linha).getQuantidade()-1);
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(null, "Produto fora de estoque!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
-                
-                }
-		
+		if (ProdutosDisponiveis.get(linha).getQuantidade() != 0) {
+			carrinho.add(ProdutosDisponiveis.get(linha));
+			atualizaTabelaCarrinho(carrinho);
+			atualizaPreco(carrinho);
+			ProdutosDisponiveis.get(linha).setQuantidade(ProdutosDisponiveis.get(linha).getQuantidade() - 1);
+
+		} else {
+
+			JOptionPane.showMessageDialog(null, "Produto fora de estoque!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+
+		}
+
     }//GEN-LAST:event_botaoAdicionarAoCarrinhoActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
@@ -343,7 +344,7 @@ public class FazerPedido extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Selecione um produto na lista para excluir", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
-		
+
 		String nome = String.valueOf(tabelaCarrinho.getValueAt(linha, 0));
 		carrinho.remove(encontraProduto(carrinho, nome));
 
@@ -352,7 +353,7 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void checkBoxPedidoDeAniversario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxPedidoDeAniversario1ActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_checkBoxPedidoDeAniversario1ActionPerformed
 
 	private void atualizaTabelaProdutosDisponiveis(ArrayList<Produto> produtosDisponiveis) {
@@ -405,7 +406,7 @@ public class FazerPedido extends javax.swing.JFrame {
 		for (Produto produto : carrinho) {
 			valor += produto.getPreco();
 		}
-		
+
 		labelValorTotal.setText(String.format("R$ %.2f", valor));
 	}
 

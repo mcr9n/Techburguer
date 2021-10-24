@@ -2,38 +2,38 @@ package classes;
 
 public class Pessoa {
 
-    protected long cpf;
-    protected String nome;
-    protected String dataDeNascimento;
+	protected String cpf;
+	protected String nome;
+	protected String dataDeNascimento;
 
-    public Pessoa(long cpf, String nome, String dataDeNascimento) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.dataDeNascimento = dataDeNascimento;
-    }
+	public Pessoa(String cpf, String nome, String dataDeNascimento) {
+		this.cpf = cpf;
+		this.nome = nome;
+		this.dataDeNascimento = dataDeNascimento;
+	}
 
-    public long getCpf() {
-        return cpf;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setCpf(long cpf) {
-        this.cpf = cpf;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getDataDeNascimento() {
-        return dataDeNascimento;
-    }
+	public String getDataDeNascimento() {
+		return dataDeNascimento;
+	}
 
-    public void setDataDeNascimento(String dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
+	public void setDataDeNascimento(String dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
 
 }

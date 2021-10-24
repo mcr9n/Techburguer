@@ -2,37 +2,37 @@ package classes;
 
 public class Funcionario extends Pessoa {
 
-    protected String senha;
-    protected float salario;
-    private String ocupacao;
+	protected String senha;
+	protected float salario;
+	private String ocupacao;
 
-    public Funcionario(String senha, float salario, long cpf, String nome, String dataDeNascimento) {
-        super(cpf, nome, dataDeNascimento);
-        this.senha = senha;
-        this.salario = salario;
-    }
+	public Funcionario(String senha, float salario, String cpf, String nome, String dataDeNascimento) {
+		super(cpf, nome, dataDeNascimento);
+		this.senha = senha;
+		this.salario = salario;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-    public float getSalario() {
-        return salario;
-    }
+	public float getSalario() {
+		return salario;
+	}
 
-    public void setSalario(float salario) {
-        this.salario = salario;
-    }
-    
-    public void setOcupacao(String ocupacao){
-        this.ocupacao = ocupacao;
-    }
-    
-    public String getOcupacao(){
-        return ocupacao;
-    }
+	public void setSalario(float salario) {
+		this.salario = salario;
+	}
+
+	public void setOcupacao(String ocupacao) {
+		this.ocupacao = ocupacao;
+	}
+
+	public String getOcupacao() {
+		return ocupacao;
+	}
 }

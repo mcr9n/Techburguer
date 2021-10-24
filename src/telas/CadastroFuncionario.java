@@ -15,81 +15,79 @@ import javax.swing.table.DefaultTableModel;
 import static telas.TelaInicial.ListaFuncionario;
 import static telas.TelaInicial.listaPedidos;
 
-
 /**
  *
  * @author 144fps
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
 
+	String botao_apertado;
 
-    String botao_apertado;
+	/**
+	 * Creates new form CadastroFuncionario
+	 */
+	public CadastroFuncionario() {
+		initComponents();
+		setLocationRelativeTo(null);
 
-    /**
-     * Creates new form CadastroFuncionario
-     */
-    public CadastroFuncionario() {
-        initComponents();
-        setLocationRelativeTo(null);
+		//Habilitar ou desabilitar botões:
+		btnNovoCadastroFuncionario.setEnabled(true);
+		btnSalvarCadastroFuncionario.setEnabled(false);
+		btnCancelarCadastroFuncionario.setEnabled(false);
+		btnEditarCadastroFuncionario.setEnabled(false);
+		btnExcluirCadastroFuncionario.setEnabled(false);
+		btnPesquisarCadastroFuncionario.setEnabled(true);
+		btnOKCadastroFuncionario.setEnabled(false);
+		cmbOcupacaoCadastroFuncionario.setEnabled(false);
 
-        //Habilitar ou desabilitar botões:
-        btnNovoCadastroFuncionario.setEnabled(true);
-        btnSalvarCadastroFuncionario.setEnabled(false);
-        btnCancelarCadastroFuncionario.setEnabled(false);
-        btnEditarCadastroFuncionario.setEnabled(false);
-        btnExcluirCadastroFuncionario.setEnabled(false);
-        btnPesquisarCadastroFuncionario.setEnabled(true);
-        btnOKCadastroFuncionario.setEnabled(false);
-        cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		//Habilitar ou Desabilitar os textos:
+		txtCpfCadastroFuncionario.setEnabled(false);
+		txtNomeCadastroFuncionario.setEnabled(false);
+		txtDataNascimentoCadastroFuncionario.setEnabled(false);
+		txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+		txtSalarioCadastroFuncionario.setEnabled(false);
 
-        //Habilitar ou Desabilitar os textos:
-        txtCpfCadastroFuncionario.setEnabled(false);
-        txtNomeCadastroFuncionario.setEnabled(false);
-        txtDataNascimentoCadastroFuncionario.setEnabled(false);
-        txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-        txtSalarioCadastroFuncionario.setEnabled(false);
+		carregarFuncionarios();
 
-        carregarFuncionarios();
+	}
 
-    }
+	public void carregarTabelaFuncionarios() {
+		DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Cpf", "Nome", "Data de Nascimento", "Senha funcionário", "Salário", "Ocupação"}, 0);
 
-    public void carregarTabelaFuncionarios() {
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Cpf", "Nome", "Data de Nascimento", "Senha funcionário", "Salário", "Ocupação"}, 0);
+		for (int i = 0; i < ListaFuncionario.size(); i++) {
+			Object linha[] = new Object[]{ListaFuncionario.get(i).getCpf(),
+				ListaFuncionario.get(i).getNome(),
+				ListaFuncionario.get(i).getDataDeNascimento(),
+				ListaFuncionario.get(i).getSenha(),
+				ListaFuncionario.get(i).getSalario(),
+				ListaFuncionario.get(i).getOcupacao()};
+			modelo.addRow(linha);
+		}
 
-        for (int i = 0; i < ListaFuncionario.size(); i++) {
-            Object linha[] = new Object[]{ListaFuncionario.get(i).getCpf(),
-                ListaFuncionario.get(i).getNome(),
-                ListaFuncionario.get(i).getDataDeNascimento(),
-                ListaFuncionario.get(i).getSenha(),
-                ListaFuncionario.get(i).getSalario(),
-                ListaFuncionario.get(i).getOcupacao()};
-            modelo.addRow(linha);
-        }
+		//Tabela recebe o modelo:
+		tblFuncionariosCadastroFuncionario.setModel(modelo);
 
-        //Tabela recebe o modelo:
-        tblFuncionariosCadastroFuncionario.setModel(modelo);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(0).setPreferredWidth(50);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(1).setPreferredWidth(50);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(2).setPreferredWidth(50);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(3).setPreferredWidth(50);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(4).setPreferredWidth(50);
+		tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(5).setPreferredWidth(50);
+	}
 
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(1).setPreferredWidth(50);
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(2).setPreferredWidth(50);
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(4).setPreferredWidth(50);
-        tblFuncionariosCadastroFuncionario.getColumnModel().getColumn(5).setPreferredWidth(50);
-    }
+	public void carregarFuncionarios() {
+		cmbOcupacaoCadastroFuncionario.removeAllItems();
+		cmbOcupacaoCadastroFuncionario.addItem("Selecione a ocupação do funcionário");
+		cmbOcupacaoCadastroFuncionario.addItem("Cozinheiro");
+		cmbOcupacaoCadastroFuncionario.addItem("Caixa");
+	}
 
-    public void carregarFuncionarios() {
-        cmbOcupacaoCadastroFuncionario.removeAllItems();
-        cmbOcupacaoCadastroFuncionario.addItem("Selecione a ocupação do funcionário");
-        cmbOcupacaoCadastroFuncionario.addItem("Cozinheiro");
-        cmbOcupacaoCadastroFuncionario.addItem("Caixa");
-    }
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
+	/**
+	 * This method is called from within the constructor to initialize
+	 * the form. WARNING: Do NOT modify this code. The content of this
+	 * method is always regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -362,383 +360,367 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-        botao_apertado = "novo";
+		// TODO add your handling code here:
+		botao_apertado = "novo";
 
-        //Habilitar ou desabilitar botões:
-        btnNovoCadastroFuncionario.setEnabled(false);
-        btnSalvarCadastroFuncionario.setEnabled(true);
-        btnCancelarCadastroFuncionario.setEnabled(true);
-        btnEditarCadastroFuncionario.setEnabled(false);
-        btnExcluirCadastroFuncionario.setEnabled(false);
-        btnPesquisarCadastroFuncionario.setEnabled(false);
-        btnOKCadastroFuncionario.setEnabled(false);
-        cmbOcupacaoCadastroFuncionario.setEnabled(true);
+		//Habilitar ou desabilitar botões:
+		btnNovoCadastroFuncionario.setEnabled(false);
+		btnSalvarCadastroFuncionario.setEnabled(true);
+		btnCancelarCadastroFuncionario.setEnabled(true);
+		btnEditarCadastroFuncionario.setEnabled(false);
+		btnExcluirCadastroFuncionario.setEnabled(false);
+		btnPesquisarCadastroFuncionario.setEnabled(false);
+		btnOKCadastroFuncionario.setEnabled(false);
+		cmbOcupacaoCadastroFuncionario.setEnabled(true);
 
-        //Habilitar ou Desabilitar os textos:
-        txtCpfCadastroFuncionario.setEnabled(true);
-        txtNomeCadastroFuncionario.setEnabled(true);
-        txtDataNascimentoCadastroFuncionario.setEnabled(true);
-        txtSenhaFuncionarioCadastroFuncionario.setEnabled(true);
-        txtSalarioCadastroFuncionario.setEnabled(true);
+		//Habilitar ou Desabilitar os textos:
+		txtCpfCadastroFuncionario.setEnabled(true);
+		txtNomeCadastroFuncionario.setEnabled(true);
+		txtDataNascimentoCadastroFuncionario.setEnabled(true);
+		txtSenhaFuncionarioCadastroFuncionario.setEnabled(true);
+		txtSalarioCadastroFuncionario.setEnabled(true);
 
-        txtCpfCadastroFuncionario.requestFocus();
-        carregarFuncionarios();
+		txtCpfCadastroFuncionario.requestFocus();
+		carregarFuncionarios();
 
     }//GEN-LAST:event_btnNovoCadastroFuncionarioActionPerformed
 
     private void cmbOcupacaoCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOcupacaoCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_cmbOcupacaoCadastroFuncionarioActionPerformed
 
     private void btnSalvarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-        int indexFuncionarioComboBox = cmbOcupacaoCadastroFuncionario.getSelectedIndex();
+		// TODO add your handling code here:
+		int indexFuncionarioComboBox = cmbOcupacaoCadastroFuncionario.getSelectedIndex();
 
-        if (txtCpfCadastroFuncionario.getText().equals("") || txtNomeCadastroFuncionario.getText().equals("") || txtDataNascimentoCadastroFuncionario.getText().equals("")
-            || txtSenhaFuncionarioCadastroFuncionario.getText().equals("") || txtSalarioCadastroFuncionario.getText().equals("")) {
+		if (txtCpfCadastroFuncionario.getText().equals("") || txtNomeCadastroFuncionario.getText().equals("") || txtDataNascimentoCadastroFuncionario.getText().equals("")
+				|| txtSenhaFuncionarioCadastroFuncionario.getText().equals("") || txtSalarioCadastroFuncionario.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
 
-            txtCpfCadastroFuncionario.requestFocus();
-        } 
-        
-        else if (indexFuncionarioComboBox == 0 && botao_apertado.equals("novo")) {
-            JOptionPane.showMessageDialog(null, "Você deve selecionar uma ocupação!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
-        }
-        
-        else {
-            long cpf = Long.parseLong(txtCpfCadastroFuncionario.getText());
-            String nome = txtNomeCadastroFuncionario.getText();
-            String dataNascimento = txtDataNascimentoCadastroFuncionario.getText();
-            String senha = txtSenhaFuncionarioCadastroFuncionario.getText();
-            float salario = Float.parseFloat(txtSalarioCadastroFuncionario.getText());
+			txtCpfCadastroFuncionario.requestFocus();
+		} else if (indexFuncionarioComboBox == 0 && botao_apertado.equals("novo")) {
+			JOptionPane.showMessageDialog(null, "Você deve selecionar uma ocupação!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+		} else {
+			String cpf = txtCpfCadastroFuncionario.getText();
+			String nome = txtNomeCadastroFuncionario.getText();
+			String dataNascimento = txtDataNascimentoCadastroFuncionario.getText();
+			String senha = txtSenhaFuncionarioCadastroFuncionario.getText();
+			float salario = Float.parseFloat(txtSalarioCadastroFuncionario.getText());
 
-            if (botao_apertado.equals("novo")) {
-                if (indexFuncionarioComboBox == 1) {
-       
-                    Cozinheiro cozinheiro = new Cozinheiro(listaPedidos, senha, salario, cpf, nome, dataNascimento);
-                    
-                    cozinheiro.setOcupacao("Cozinheiro");
-                    
-                    ListaFuncionario.add(cozinheiro);
+			if (botao_apertado.equals("novo")) {
+				if (indexFuncionarioComboBox == 1) {
 
-                    JOptionPane.showMessageDialog(null, "Cozinheiro adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
-                } 
-                else if (indexFuncionarioComboBox == 2) {
-                    Caixa caixa = new Caixa(listaPedidos, senha, salario, cpf, nome, dataNascimento);
-                    
-                    caixa.setOcupacao("Caixa");
-                    
-                    ListaFuncionario.add(caixa);
+					Cozinheiro cozinheiro = new Cozinheiro(listaPedidos, senha, salario, cpf, nome, dataNascimento);
 
-                    JOptionPane.showMessageDialog(null, "Caixa adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
-                }
-            } 
-            
-            else if (botao_apertado.equals("editar")) {
-                int indexLinhaSelecionada = tblFuncionariosCadastroFuncionario.getSelectedRow();
+					cozinheiro.setOcupacao("Cozinheiro");
 
-               ListaFuncionario.get(indexLinhaSelecionada).setCpf(cpf);
-                ListaFuncionario.get(indexLinhaSelecionada).setNome(nome);
-                ListaFuncionario.get(indexLinhaSelecionada).setDataDeNascimento(dataNascimento);
-                ListaFuncionario.get(indexLinhaSelecionada).setSenha(senha);
-                ListaFuncionario.get(indexLinhaSelecionada).setSalario(salario);
-            }
+					ListaFuncionario.add(cozinheiro);
 
-            //Limpar os textos:
-            txtCpfCadastroFuncionario.setText("");
-            txtNomeCadastroFuncionario.setText("");
-            txtDataNascimentoCadastroFuncionario.setText("");
-            txtSenhaFuncionarioCadastroFuncionario.setText("");
-            txtSalarioCadastroFuncionario.setText("");
+					JOptionPane.showMessageDialog(null, "Cozinheiro adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+				} else if (indexFuncionarioComboBox == 2) {
+					Caixa caixa = new Caixa(listaPedidos, senha, salario, cpf, nome, dataNascimento);
 
-            //Habilitar ou desabilitar botões:
-            btnNovoCadastroFuncionario.setEnabled(true);
-            btnSalvarCadastroFuncionario.setEnabled(false);
-            btnCancelarCadastroFuncionario.setEnabled(false);
-            btnEditarCadastroFuncionario.setEnabled(false);
-            btnExcluirCadastroFuncionario.setEnabled(false);
-            btnPesquisarCadastroFuncionario.setEnabled(true);
-            btnOKCadastroFuncionario.setEnabled(false);
-            cmbOcupacaoCadastroFuncionario.setEnabled(false);
+					caixa.setOcupacao("Caixa");
 
-            //Habilitar ou Desabilitar os textos:
-            txtCpfCadastroFuncionario.setEnabled(false);
-            txtNomeCadastroFuncionario.setEnabled(false);
-            txtDataNascimentoCadastroFuncionario.setEnabled(false);
-            txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-            txtSalarioCadastroFuncionario.setEnabled(false);
+					ListaFuncionario.add(caixa);
 
-            carregarTabelaFuncionarios();
+					JOptionPane.showMessageDialog(null, "Caixa adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+				}
+			} else if (botao_apertado.equals("editar")) {
+				int indexLinhaSelecionada = tblFuncionariosCadastroFuncionario.getSelectedRow();
 
-        }
+				ListaFuncionario.get(indexLinhaSelecionada).setCpf(cpf);
+				ListaFuncionario.get(indexLinhaSelecionada).setNome(nome);
+				ListaFuncionario.get(indexLinhaSelecionada).setDataDeNascimento(dataNascimento);
+				ListaFuncionario.get(indexLinhaSelecionada).setSenha(senha);
+				ListaFuncionario.get(indexLinhaSelecionada).setSalario(salario);
+			}
+
+			//Limpar os textos:
+			txtCpfCadastroFuncionario.setText("");
+			txtNomeCadastroFuncionario.setText("");
+			txtDataNascimentoCadastroFuncionario.setText("");
+			txtSenhaFuncionarioCadastroFuncionario.setText("");
+			txtSalarioCadastroFuncionario.setText("");
+
+			//Habilitar ou desabilitar botões:
+			btnNovoCadastroFuncionario.setEnabled(true);
+			btnSalvarCadastroFuncionario.setEnabled(false);
+			btnCancelarCadastroFuncionario.setEnabled(false);
+			btnEditarCadastroFuncionario.setEnabled(false);
+			btnExcluirCadastroFuncionario.setEnabled(false);
+			btnPesquisarCadastroFuncionario.setEnabled(true);
+			btnOKCadastroFuncionario.setEnabled(false);
+			cmbOcupacaoCadastroFuncionario.setEnabled(false);
+
+			//Habilitar ou Desabilitar os textos:
+			txtCpfCadastroFuncionario.setEnabled(false);
+			txtNomeCadastroFuncionario.setEnabled(false);
+			txtDataNascimentoCadastroFuncionario.setEnabled(false);
+			txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+			txtSalarioCadastroFuncionario.setEnabled(false);
+
+			carregarTabelaFuncionarios();
+
+		}
 
     }//GEN-LAST:event_btnSalvarCadastroFuncionarioActionPerformed
 
     private void btnCancelarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-        
-        //Limpar os textos:
-        txtCpfCadastroFuncionario.setText("");
-        txtNomeCadastroFuncionario.setText("");
-        txtDataNascimentoCadastroFuncionario.setText("");
-        txtSenhaFuncionarioCadastroFuncionario.setText("");
-        txtSalarioCadastroFuncionario.setText("");
-        
-        //Habilitar ou desabilitar botões:
-        btnNovoCadastroFuncionario.setEnabled(true);
-        btnSalvarCadastroFuncionario.setEnabled(false);
-        btnCancelarCadastroFuncionario.setEnabled(false);
-        btnEditarCadastroFuncionario.setEnabled(false);
-        btnExcluirCadastroFuncionario.setEnabled(false);
-        btnPesquisarCadastroFuncionario.setEnabled(true);
-        btnOKCadastroFuncionario.setEnabled(false);
-        cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		// TODO add your handling code here:
 
-        //Habilitar ou Desabilitar os textos:
-        txtCpfCadastroFuncionario.setEnabled(false);
-        txtNomeCadastroFuncionario.setEnabled(false);
-        txtDataNascimentoCadastroFuncionario.setEnabled(false);
-        txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-        txtSalarioCadastroFuncionario.setEnabled(false);
+		//Limpar os textos:
+		txtCpfCadastroFuncionario.setText("");
+		txtNomeCadastroFuncionario.setText("");
+		txtDataNascimentoCadastroFuncionario.setText("");
+		txtSenhaFuncionarioCadastroFuncionario.setText("");
+		txtSalarioCadastroFuncionario.setText("");
 
-        carregarFuncionarios();
+		//Habilitar ou desabilitar botões:
+		btnNovoCadastroFuncionario.setEnabled(true);
+		btnSalvarCadastroFuncionario.setEnabled(false);
+		btnCancelarCadastroFuncionario.setEnabled(false);
+		btnEditarCadastroFuncionario.setEnabled(false);
+		btnExcluirCadastroFuncionario.setEnabled(false);
+		btnPesquisarCadastroFuncionario.setEnabled(true);
+		btnOKCadastroFuncionario.setEnabled(false);
+		cmbOcupacaoCadastroFuncionario.setEnabled(false);
+
+		//Habilitar ou Desabilitar os textos:
+		txtCpfCadastroFuncionario.setEnabled(false);
+		txtNomeCadastroFuncionario.setEnabled(false);
+		txtDataNascimentoCadastroFuncionario.setEnabled(false);
+		txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+		txtSalarioCadastroFuncionario.setEnabled(false);
+
+		carregarFuncionarios();
     }//GEN-LAST:event_btnCancelarCadastroFuncionarioActionPerformed
 
     private void btnEditarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 
-        botao_apertado = "editar";
+		botao_apertado = "editar";
 
-        //Habilitar ou desabilitar botões:
-        btnNovoCadastroFuncionario.setEnabled(false);
-        btnSalvarCadastroFuncionario.setEnabled(true);
-        btnCancelarCadastroFuncionario.setEnabled(true);
-        btnEditarCadastroFuncionario.setEnabled(false);
-        btnExcluirCadastroFuncionario.setEnabled(false);
-        btnPesquisarCadastroFuncionario.setEnabled(false);
-        btnOKCadastroFuncionario.setEnabled(false);
-        cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		//Habilitar ou desabilitar botões:
+		btnNovoCadastroFuncionario.setEnabled(false);
+		btnSalvarCadastroFuncionario.setEnabled(true);
+		btnCancelarCadastroFuncionario.setEnabled(true);
+		btnEditarCadastroFuncionario.setEnabled(false);
+		btnExcluirCadastroFuncionario.setEnabled(false);
+		btnPesquisarCadastroFuncionario.setEnabled(false);
+		btnOKCadastroFuncionario.setEnabled(false);
+		cmbOcupacaoCadastroFuncionario.setEnabled(false);
 
-        //Habilitar ou Desabilitar os textos:
-        txtCpfCadastroFuncionario.setEnabled(true);
-        txtNomeCadastroFuncionario.setEnabled(true);
-        txtDataNascimentoCadastroFuncionario.setEnabled(true);
-        txtSenhaFuncionarioCadastroFuncionario.setEnabled(true);
-        txtSalarioCadastroFuncionario.setEnabled(true);
+		//Habilitar ou Desabilitar os textos:
+		txtCpfCadastroFuncionario.setEnabled(true);
+		txtNomeCadastroFuncionario.setEnabled(true);
+		txtDataNascimentoCadastroFuncionario.setEnabled(true);
+		txtSenhaFuncionarioCadastroFuncionario.setEnabled(true);
+		txtSalarioCadastroFuncionario.setEnabled(true);
 
-        txtCpfCadastroFuncionario.requestFocus();
-        carregarFuncionarios();
+		txtCpfCadastroFuncionario.requestFocus();
+		carregarFuncionarios();
 
     }//GEN-LAST:event_btnEditarCadastroFuncionarioActionPerformed
 
     private void btnExcluirCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 
-        //Guardar indice da linha selecionada:
-        int indexLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
+		//Guardar indice da linha selecionada:
+		int indexLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
 
-        //Verificar se a linha é valida:
-        if (indexLinha >= 0 && indexLinha < ListaFuncionario.size()) {
-            ListaFuncionario.remove(indexLinha);
-        }
+		//Verificar se a linha é valida:
+		if (indexLinha >= 0 && indexLinha < ListaFuncionario.size()) {
+			ListaFuncionario.remove(indexLinha);
+		}
 
-        //carregar tabela:
-        carregarTabelaFuncionarios()
-                
-                ;
+		//carregar tabela:
+		carregarTabelaFuncionarios();
 
-        //Limpar os textos:
-        txtCpfCadastroFuncionario.setText("");
-        txtNomeCadastroFuncionario.setText("");
-        txtDataNascimentoCadastroFuncionario.setText("");
-        txtSenhaFuncionarioCadastroFuncionario.setText("");
-        txtSalarioCadastroFuncionario.setText("");
+		//Limpar os textos:
+		txtCpfCadastroFuncionario.setText("");
+		txtNomeCadastroFuncionario.setText("");
+		txtDataNascimentoCadastroFuncionario.setText("");
+		txtSenhaFuncionarioCadastroFuncionario.setText("");
+		txtSalarioCadastroFuncionario.setText("");
 
-        //Habilitar ou desabilitar botões:
-        btnNovoCadastroFuncionario.setEnabled(true);
-        btnSalvarCadastroFuncionario.setEnabled(false);
-        btnCancelarCadastroFuncionario.setEnabled(false);
-        btnEditarCadastroFuncionario.setEnabled(false);
-        btnExcluirCadastroFuncionario.setEnabled(false);
-        btnPesquisarCadastroFuncionario.setEnabled(true);
-        btnOKCadastroFuncionario.setEnabled(false);
-        cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		//Habilitar ou desabilitar botões:
+		btnNovoCadastroFuncionario.setEnabled(true);
+		btnSalvarCadastroFuncionario.setEnabled(false);
+		btnCancelarCadastroFuncionario.setEnabled(false);
+		btnEditarCadastroFuncionario.setEnabled(false);
+		btnExcluirCadastroFuncionario.setEnabled(false);
+		btnPesquisarCadastroFuncionario.setEnabled(true);
+		btnOKCadastroFuncionario.setEnabled(false);
+		cmbOcupacaoCadastroFuncionario.setEnabled(false);
 
-        //Habilitar ou Desabilitar os textos:
-        txtCpfCadastroFuncionario.setEnabled(false);
-        txtNomeCadastroFuncionario.setEnabled(false);
-        txtDataNascimentoCadastroFuncionario.setEnabled(false);
-        txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-        txtSalarioCadastroFuncionario.setEnabled(false);
+		//Habilitar ou Desabilitar os textos:
+		txtCpfCadastroFuncionario.setEnabled(false);
+		txtNomeCadastroFuncionario.setEnabled(false);
+		txtDataNascimentoCadastroFuncionario.setEnabled(false);
+		txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+		txtSalarioCadastroFuncionario.setEnabled(false);
 
-        carregarFuncionarios();
-
+		carregarFuncionarios();
 
     }//GEN-LAST:event_btnExcluirCadastroFuncionarioActionPerformed
 
     private void btnPesquisarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-        
-        if(ListaFuncionario.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
-        }
-        
-        else{
-            
-            //Habilitar ou desabilitar botões:
-            btnNovoCadastroFuncionario.setEnabled(false);
-            btnSalvarCadastroFuncionario.setEnabled(false);
-            btnCancelarCadastroFuncionario.setEnabled(true);
-            btnEditarCadastroFuncionario.setEnabled(false);
-            btnExcluirCadastroFuncionario.setEnabled(false);
-            btnPesquisarCadastroFuncionario.setEnabled(true);
-            btnOKCadastroFuncionario.setEnabled(true);
-            cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		// TODO add your handling code here:
 
-            //Habilitar ou Desabilitar os textos:
-            txtCpfCadastroFuncionario.setEnabled(true);
-            txtNomeCadastroFuncionario.setEnabled(false);
-            txtDataNascimentoCadastroFuncionario.setEnabled(false);
-            txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-            txtSalarioCadastroFuncionario.setEnabled(false);
-        
-            txtCpfCadastroFuncionario.requestFocus();
-        }
+		if (ListaFuncionario.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+		} else {
+
+			//Habilitar ou desabilitar botões:
+			btnNovoCadastroFuncionario.setEnabled(false);
+			btnSalvarCadastroFuncionario.setEnabled(false);
+			btnCancelarCadastroFuncionario.setEnabled(true);
+			btnEditarCadastroFuncionario.setEnabled(false);
+			btnExcluirCadastroFuncionario.setEnabled(false);
+			btnPesquisarCadastroFuncionario.setEnabled(true);
+			btnOKCadastroFuncionario.setEnabled(true);
+			cmbOcupacaoCadastroFuncionario.setEnabled(false);
+
+			//Habilitar ou Desabilitar os textos:
+			txtCpfCadastroFuncionario.setEnabled(true);
+			txtNomeCadastroFuncionario.setEnabled(false);
+			txtDataNascimentoCadastroFuncionario.setEnabled(false);
+			txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+			txtSalarioCadastroFuncionario.setEnabled(false);
+
+			txtCpfCadastroFuncionario.requestFocus();
+		}
     }//GEN-LAST:event_btnPesquisarCadastroFuncionarioActionPerformed
 
     private void btnOKCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-        
-        if(txtCpfCadastroFuncionario.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "O CPF deve ser informado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
-        }
-        
-        else{
-            Funcionario fun;
-            
-            String cpf = "", nome = "", dataNascimento = "", senha = "", salario = "", ocupacao = "";
-            
-            long cpfPesquisado = Long.parseLong(txtCpfCadastroFuncionario.getText());
-            
-            for(int i = 0; i < ListaFuncionario.size(); i++){
-                fun = ListaFuncionario.get(i);
-                
-                if(cpfPesquisado == fun.getCpf()){
-                    cpf = String.valueOf(fun.getCpf());
-                    nome = fun.getNome();
-                    dataNascimento = fun.getDataDeNascimento();
-                    senha = fun.getSenha();
-                    salario = String.valueOf(fun.getSalario());
-                    ocupacao = fun.getOcupacao();
-                }
-            }
-            if(cpf.equals("")){
-                JOptionPane.showMessageDialog(null, "Este funcionario não está no sistema!", "Aviso", JOptionPane.PLAIN_MESSAGE);
+		// TODO add your handling code here:
 
-                //Limpar textos:
-                txtCpfCadastroFuncionario.setText("");
-                txtNomeCadastroFuncionario.setText("");
-                txtDataNascimentoCadastroFuncionario.setText("");
-                txtSenhaFuncionarioCadastroFuncionario.setText("");
-                txtSalarioCadastroFuncionario.setText("");
-                cmbOcupacaoCadastroFuncionario.removeAllItems();
+		if (txtCpfCadastroFuncionario.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "O CPF deve ser informado!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
+		} else {
+			Funcionario fun;
 
-            }
-                
-            else{
-                txtCpfCadastroFuncionario.setText(cpf);
-                txtNomeCadastroFuncionario.setText(nome);
-                txtDataNascimentoCadastroFuncionario.setText(dataNascimento);
-                txtSenhaFuncionarioCadastroFuncionario.setText(senha);
-                txtSalarioCadastroFuncionario.setText(salario);
-                cmbOcupacaoCadastroFuncionario.removeAllItems();
-                cmbOcupacaoCadastroFuncionario.addItem(ocupacao);
-            }
-            
-            txtCpfCadastroFuncionario.selectAll();
-            txtCpfCadastroFuncionario.requestFocus();
-        }
-        
+			String cpf = "", nome = "", dataNascimento = "", senha = "", salario = "", ocupacao = "";
+
+			String cpfPesquisado = txtCpfCadastroFuncionario.getText();
+
+			for (int i = 0; i < ListaFuncionario.size(); i++) {
+				fun = ListaFuncionario.get(i);
+
+				if (cpfPesquisado == fun.getCpf()) {
+					cpf = String.valueOf(fun.getCpf());
+					nome = fun.getNome();
+					dataNascimento = fun.getDataDeNascimento();
+					senha = fun.getSenha();
+					salario = String.valueOf(fun.getSalario());
+					ocupacao = fun.getOcupacao();
+				}
+			}
+			if (cpf.equals("")) {
+				JOptionPane.showMessageDialog(null, "Este funcionario não está no sistema!", "Aviso", JOptionPane.PLAIN_MESSAGE);
+
+				//Limpar textos:
+				txtCpfCadastroFuncionario.setText("");
+				txtNomeCadastroFuncionario.setText("");
+				txtDataNascimentoCadastroFuncionario.setText("");
+				txtSenhaFuncionarioCadastroFuncionario.setText("");
+				txtSalarioCadastroFuncionario.setText("");
+				cmbOcupacaoCadastroFuncionario.removeAllItems();
+
+			} else {
+				txtCpfCadastroFuncionario.setText(cpf);
+				txtNomeCadastroFuncionario.setText(nome);
+				txtDataNascimentoCadastroFuncionario.setText(dataNascimento);
+				txtSenhaFuncionarioCadastroFuncionario.setText(senha);
+				txtSalarioCadastroFuncionario.setText(salario);
+				cmbOcupacaoCadastroFuncionario.removeAllItems();
+				cmbOcupacaoCadastroFuncionario.addItem(ocupacao);
+			}
+
+			txtCpfCadastroFuncionario.selectAll();
+			txtCpfCadastroFuncionario.requestFocus();
+		}
+
     }//GEN-LAST:event_btnOKCadastroFuncionarioActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
+		// TODO add your handling code here:
+		this.setVisible(false);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void tblFuncionariosCadastroFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFuncionariosCadastroFuncionarioMouseClicked
-        // TODO add your handling code here:
-        
-        //Guardar o indice da linha selecionada:
-        int indiceLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
-        
-        //Verificar se o índice é válido:
-        if(indiceLinha >= 0 && indiceLinha < ListaFuncionario.size()){
-            
-            Funcionario fun = ListaFuncionario.get(indiceLinha);
-            txtCpfCadastroFuncionario.setText(String.valueOf(fun.getCpf()));
-            txtNomeCadastroFuncionario.setText(fun.getNome());
-            txtDataNascimentoCadastroFuncionario.setText(fun.getDataDeNascimento());
-            txtSenhaFuncionarioCadastroFuncionario.setText(fun.getSenha());
-            txtSalarioCadastroFuncionario.setText(String.valueOf(fun.getSalario()));
-            cmbOcupacaoCadastroFuncionario.removeAllItems();
-            cmbOcupacaoCadastroFuncionario.addItem(fun.getOcupacao());
-            
-            //Habilitar ou desabilitar botões:
-            btnNovoCadastroFuncionario.setEnabled(false);
-            btnSalvarCadastroFuncionario.setEnabled(false);
-            btnCancelarCadastroFuncionario.setEnabled(true);
-            btnEditarCadastroFuncionario.setEnabled(true);
-            btnExcluirCadastroFuncionario.setEnabled(true);
-            btnPesquisarCadastroFuncionario.setEnabled(false);
-            btnOKCadastroFuncionario.setEnabled(false);
-            cmbOcupacaoCadastroFuncionario.setEnabled(false);
+		// TODO add your handling code here:
 
-            //Habilitar ou Desabilitar os textos:
-            txtCpfCadastroFuncionario.setEnabled(false);
-            txtNomeCadastroFuncionario.setEnabled(false);
-            txtDataNascimentoCadastroFuncionario.setEnabled(false);
-            txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
-            txtSalarioCadastroFuncionario.setEnabled(false);
-        }
+		//Guardar o indice da linha selecionada:
+		int indiceLinha = tblFuncionariosCadastroFuncionario.getSelectedRow();
+
+		//Verificar se o índice é válido:
+		if (indiceLinha >= 0 && indiceLinha < ListaFuncionario.size()) {
+
+			Funcionario fun = ListaFuncionario.get(indiceLinha);
+			txtCpfCadastroFuncionario.setText(String.valueOf(fun.getCpf()));
+			txtNomeCadastroFuncionario.setText(fun.getNome());
+			txtDataNascimentoCadastroFuncionario.setText(fun.getDataDeNascimento());
+			txtSenhaFuncionarioCadastroFuncionario.setText(fun.getSenha());
+			txtSalarioCadastroFuncionario.setText(String.valueOf(fun.getSalario()));
+			cmbOcupacaoCadastroFuncionario.removeAllItems();
+			cmbOcupacaoCadastroFuncionario.addItem(fun.getOcupacao());
+
+			//Habilitar ou desabilitar botões:
+			btnNovoCadastroFuncionario.setEnabled(false);
+			btnSalvarCadastroFuncionario.setEnabled(false);
+			btnCancelarCadastroFuncionario.setEnabled(true);
+			btnEditarCadastroFuncionario.setEnabled(true);
+			btnExcluirCadastroFuncionario.setEnabled(true);
+			btnPesquisarCadastroFuncionario.setEnabled(false);
+			btnOKCadastroFuncionario.setEnabled(false);
+			cmbOcupacaoCadastroFuncionario.setEnabled(false);
+
+			//Habilitar ou Desabilitar os textos:
+			txtCpfCadastroFuncionario.setEnabled(false);
+			txtNomeCadastroFuncionario.setEnabled(false);
+			txtDataNascimentoCadastroFuncionario.setEnabled(false);
+			txtSenhaFuncionarioCadastroFuncionario.setEnabled(false);
+			txtSalarioCadastroFuncionario.setEnabled(false);
+		}
     }//GEN-LAST:event_tblFuncionariosCadastroFuncionarioMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String args[]) {
+		/* Set the Nimbus look and feel */
+		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+		 */
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (InstantiationException ex) {
+			java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (IllegalAccessException ex) {
+			java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+			java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		//</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroFuncionario().setVisible(true);
-            }
-        });
-    }
+		/* Create and display the form */
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new CadastroFuncionario().setVisible(true);
+			}
+		});
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarCadastroFuncionario;

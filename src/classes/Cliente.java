@@ -6,30 +6,27 @@ import java.util.Calendar;
 public class Cliente extends Pessoa {
 
 	private ArrayList<Pedido> pedidos;
-	private boolean fazAniversario;
 	private boolean jaFezPedidoAniversario;
 
 	public Cliente(String cpf, String nome, String dataDeNascimento) {
 		super(cpf, nome, dataDeNascimento);
-		String[] data_nascimento = dataDeNascimento.split("/");
-		Calendar c = Calendar.getInstance();
 		this.pedidos = new ArrayList<Pedido>();
 
 		// TODO: Pegar a data de hoje corretamente
-		if (c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(data_nascimento[0]) && (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1])) {
-			fazAniversario = true;
+		//if () {
+		//	fazAniversario = true;
 
-		} else {
-			fazAniversario = false;
-		}
+		//} else {
+		//	fazAniversario = false;
+		//}
 
-		if (checarAniversario()) {
+		//if (checarAniversario()) {
 
-			jaFezPedidoAniversario = true;
-		} else {
-			jaFezPedidoAniversario = false;
+		//	jaFezPedidoAniversario = true;
+		//} else {
+		//	jaFezPedidoAniversario = false;
 
-		}
+		//}
 
 	}
 
@@ -48,19 +45,21 @@ public class Cliente extends Pessoa {
 	}
 
 	public boolean checarAniversario() {
-		if (fazAniversario == true) {
-			for (int i = 0; i < pedidos.size(); i++) {
-				if (pedidos.get(i).isDeAniversariante()) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return false;
+		Calendar c = Calendar.getInstance();
+		String[] data_nascimento = dataDeNascimento.split("/");
+		
+		boolean isAniversario = c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(data_nascimento[0])
+				&& (c.get(Calendar.MONTH) + 1) == Integer.parseInt(data_nascimento[1]);
+		
+		return isAniversario;
 	}
 
 	public boolean isJaFezPedidoAniversario() {
 		return jaFezPedidoAniversario;
+	}
+	
+	public void setJaFezPedidoAniversario(boolean isPedidoDeAniversario) {
+		this.jaFezPedidoAniversario = isPedidoDeAniversario;
 	}
 
 }

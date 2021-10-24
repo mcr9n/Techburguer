@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Pedido {
 
@@ -13,12 +14,13 @@ public class Pedido {
 	private boolean pago;
 	private boolean pronto;
 
-	public Pedido(ArrayList<Produto> produtos, String formaDePagamento, float total, boolean deAniversariante, int senhaPedido, boolean pago, boolean pronto) {
+	public Pedido(ArrayList<Produto> produtos, String formaDePagamento, float total, boolean deAniversariante, boolean pago, boolean pronto) {
+		Random rand = new Random();
 		this.produtos = produtos;
 		this.formaDePagamento = formaDePagamento;
 		this.total = total;
 		this.deAniversariante = deAniversariante;
-		this.senhaPedido = senhaPedido;
+		this.senhaPedido = rand.nextInt();
 		this.pago = pago;
 		this.pronto = pronto;
 	}

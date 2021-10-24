@@ -27,9 +27,9 @@ public class TelaInicial extends javax.swing.JFrame {
 	 */
 	public TelaInicial() {
 		initComponents();
-		listaPedidos = new ArrayList();
-		ProdutosDisponiveis = new ArrayList();
-		ListaFuncionario = new ArrayList();
+		listaPedidos = new ArrayList<Pedido>();
+		ProdutosDisponiveis = new ArrayList<Produto>();
+		ListaFuncionario = new ArrayList<Funcionario>();
 		setLocationRelativeTo(null);
 		Calendar c = Calendar.getInstance();
 

@@ -12,22 +12,6 @@ public class Cliente extends Pessoa {
 		super(cpf, nome, dataDeNascimento);
 		this.pedidos = new ArrayList<Pedido>();
 
-		// TODO: Pegar a data de hoje corretamente
-		//if () {
-		//	fazAniversario = true;
-
-		//} else {
-		//	fazAniversario = false;
-		//}
-
-		//if (checarAniversario()) {
-
-		//	jaFezPedidoAniversario = true;
-		//} else {
-		//	jaFezPedidoAniversario = false;
-
-		//}
-
 	}
 
 	public void pagar() {

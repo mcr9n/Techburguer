@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Pedido {
-
-	static int contadorDeSenhas;
+	
 	private ArrayList<Produto> produtos;
 	private String formaDePagamento;
 	private float total;

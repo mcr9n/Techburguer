@@ -408,7 +408,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 			if (botao_apertado.equals("novo")) {
 				if (indexFuncionarioComboBox == 1) {
 
-					Cozinheiro cozinheiro = new Cozinheiro(listaPedidos, senha, salario, cpf, nome, dataNascimento);
+					Cozinheiro cozinheiro = new Cozinheiro(senha, salario, cpf, nome, dataNascimento);
 
 					cozinheiro.setOcupacao("Cozinheiro");
 
@@ -416,7 +416,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
 					JOptionPane.showMessageDialog(null, "Cozinheiro adicionado com sucesso!", "Aviso.", JOptionPane.PLAIN_MESSAGE);
 				} else if (indexFuncionarioComboBox == 2) {
-					Caixa caixa = new Caixa(listaPedidos, senha, salario, cpf, nome, dataNascimento);
+					Caixa caixa = new Caixa(senha, salario, cpf, nome, dataNascimento);
 
 					caixa.setOcupacao("Caixa");
 

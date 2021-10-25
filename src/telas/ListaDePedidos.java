@@ -52,6 +52,7 @@ public class ListaDePedidos extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/sanduiche.png")).getImage());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Pedidos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
 
@@ -172,17 +173,20 @@ public class ListaDePedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPedidosMouseClicked
 
     private void btnPedidoProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoProntoActionPerformed
-		if (tblPedidos.getSelectedRow() >= 0 && tblPedidos.getSelectedRow() < listaPedidos.size()) {
-			int i = tblPedidos.getSelectedRow();
-			listaPedidos.get(i).setPronto(true);
-			if (listaPedidos.get(i).isPago() == true && listaPedidos.get(i).isPronto() == true) {
-				listaPedidos.remove(i);
-			}
-			carregarListaDePedidos();
-		} else {
-			JOptionPane.showMessageDialog(null, "Selecione um pedido na tabela!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
-
-		}
+        if(tblPedidos.getSelectedRow()>=0 && tblPedidos.getSelectedRow()<listaPedidos.size()){
+            int i = tblPedidos.getSelectedRow();
+            listaPedidos.get(i).setPronto(true);
+            if(listaPedidos.get(i).isPago() == true && listaPedidos.get(i).isPronto() == true){
+                String mensagem = String.format("O pedido de senha %s está pronto!", listaPedidos.get(i).getSenhaPedido());
+                JOptionPane.showMessageDialog(null,mensagem,"Mensagem",JOptionPane.PLAIN_MESSAGE);
+                listaPedidos.remove(i);
+            }
+            carregarListaDePedidos();
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Selecione um pedido na tabela!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+        
+        }
     }//GEN-LAST:event_btnPedidoProntoActionPerformed
 
 	/**
@@ -227,4 +231,8 @@ public class ListaDePedidos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPedidos;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarPedidosEmDinheiro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

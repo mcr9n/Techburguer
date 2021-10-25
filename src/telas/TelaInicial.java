@@ -58,7 +58,9 @@ public class TelaInicial extends javax.swing.JFrame {
         lblDataTelaInicial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/sanduiche.png")).getImage());
 
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cliente2.png"))); // NOI18N
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,11 +69,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         lblInterfaceTelaInicial.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        lblInterfaceTelaInicial.setText("Interface TechBurguer");
+        lblInterfaceTelaInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sanduiche.png"))); // NOI18N
+        lblInterfaceTelaInicial.setText("Techburguer");
 
         lblEscolhaPerfilTelainicial.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        lblEscolhaPerfilTelainicial.setText("Escolha o Perfil desse despositivo:");
+        lblEscolhaPerfilTelainicial.setText("Escolha o seu perfil:");
 
+        btnGerenteTelaInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gerente.png"))); // NOI18N
         btnGerenteTelaInicial.setText("Gerente");
         btnGerenteTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnFuncionarioTelaInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario.png"))); // NOI18N
         btnFuncionarioTelaInicial.setText("Funcionário");
         btnFuncionarioTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,22 +97,23 @@ public class TelaInicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sprTelaInicial, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(lblEscolhaPerfilTelainicial)
-                .addContainerGap(162, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(213, 213, 213))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblInterfaceTelaInicial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDataTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEscolhaPerfilTelainicial, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGerenteTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFuncionarioTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(213, 213, 213))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

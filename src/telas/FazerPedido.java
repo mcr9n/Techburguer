@@ -30,10 +30,10 @@ public class FazerPedido extends javax.swing.JFrame {
 	 */
 	public FazerPedido() {
 		initComponents();
-		
+
 		carrinho = new ArrayList<Produto>();
 		pedidoDeAniversario = false;
-		
+
 		checkBoxPedidoDeAniversario.setEnabled(clienteAtual.checarAniversario() && !clienteAtual.isJaFezPedidoAniversario());
 
 		atualizaTabelaProdutosDisponiveis(ProdutosDisponiveis);
@@ -64,8 +64,9 @@ public class FazerPedido extends javax.swing.JFrame {
         checkBoxPedidoDeAniversario = new javax.swing.JCheckBox();
         formaDePagamento = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos Disponíveis");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/sanduiche.png")).getImage());
 
         tabelaProdutosDisponiveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,6 +211,7 @@ public class FazerPedido extends javax.swing.JFrame {
 
         MenuDeAbas.addTab("Carrinho", Carrinho);
 
+        botaoFinalizarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pedido.png"))); // NOI18N
         botaoFinalizarPedido.setText("Finalizar Pedido");
         botaoFinalizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,9 +244,6 @@ public class FazerPedido extends javax.swing.JFrame {
             .addGroup(CheckoutLayout.createSequentialGroup()
                 .addGroup(CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CheckoutLayout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(botaoFinalizarPedido))
-                    .addGroup(CheckoutLayout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(formaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,17 +252,20 @@ public class FazerPedido extends javax.swing.JFrame {
                                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(19, 19, 19)
                                     .addComponent(labelValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(checkBoxPedidoDeAniversario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(297, Short.MAX_VALUE))
+                                .addComponent(checkBoxPedidoDeAniversario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(CheckoutLayout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addComponent(botaoFinalizarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(287, 287, 287))
         );
         CheckoutLayout.setVerticalGroup(
             CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckoutLayout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addContainerGap(96, Short.MAX_VALUE)
                 .addComponent(formaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(checkBoxPedidoDeAniversario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(23, 23, 23)
                 .addGroup(CheckoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelValorTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,7 +293,7 @@ public class FazerPedido extends javax.swing.JFrame {
     private void botaoFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFinalizarPedidoActionPerformed
 
 		String formaDePagamento = String.valueOf(this.formaDePagamento.getSelectedItem());
-		
+
 		if (formaDePagamento.equals("Selecione a forma de pagamento")) {
 			JOptionPane.showMessageDialog(null, "Selecione uma forma de pagamento", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
@@ -301,22 +303,23 @@ public class FazerPedido extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "O seu carrinho está vazio", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
+		Pedido p;
+		if (checkBoxPedidoDeAniversario.isSelected()) {
+			p = new Pedido(carrinho, formaDePagamento, valorTotal, true, false, false);
 
-		Pedido pedido = new Pedido(carrinho, formaDePagamento, valorTotal, pedidoDeAniversario, false, false);
-		if (pedido.getFormaDePagamento() == "Cartão de Crédito") {
-			pedido.setPago(true);
+		} else {
+			p = new Pedido(carrinho, formaDePagamento, valorTotal, false, false, false);
 		}
-		
-		
-		//TODO: Tem que limpar o campo jaFezPedidoAniversario quando o dia passar
-		if (checkBoxPedidoDeAniversario.isEnabled()) { 
-			clienteAtual.setJaFezPedidoAniversario(checkBoxPedidoDeAniversario.isSelected());
+		if (p.getFormaDePagamento().equals("Cartão de Crédito")) {
+			p.setPago(true);
 		}
-		
-		listaPedidos.add(pedido);
+
+		listaPedidos.add(p);
 		JOptionPane.showMessageDialog(null, "O seu pedido foi realizado com sucesso!", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 		carrinho.clear();
 		atualizaTabelaCarrinho(carrinho);
+		this.setVisible(false);
+		new CadastroCliente().setVisible(true);
     }//GEN-LAST:event_botaoFinalizarPedidoActionPerformed
 
     private void botaoAdicionarAoCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarAoCarrinhoActionPerformed

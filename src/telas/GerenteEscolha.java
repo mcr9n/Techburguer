@@ -33,7 +33,8 @@ public class GerenteEscolha extends javax.swing.JFrame {
         btnEstoqueGerenteEscolha = new javax.swing.JButton();
         btnCadastroFuncionariosGerenteEscolha = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/sanduiche.png")).getImage());
 
         pnlGerenteEscolha.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecione"));
 
@@ -44,6 +45,7 @@ public class GerenteEscolha extends javax.swing.JFrame {
             }
         });
 
+        btnEstoqueGerenteEscolha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/estoque.png"))); // NOI18N
         btnEstoqueGerenteEscolha.setText("Estoque");
         btnEstoqueGerenteEscolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,7 @@ public class GerenteEscolha extends javax.swing.JFrame {
             }
         });
 
+        btnCadastroFuncionariosGerenteEscolha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario.png"))); // NOI18N
         btnCadastroFuncionariosGerenteEscolha.setText("Cadastro Funcionarios");
         btnCadastroFuncionariosGerenteEscolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,24 +66,24 @@ public class GerenteEscolha extends javax.swing.JFrame {
         pnlGerenteEscolhaLayout.setHorizontalGroup(
             pnlGerenteEscolhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGerenteEscolhaLayout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(btnVoltarGerenteEscolha)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlGerenteEscolhaLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnEstoqueGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addComponent(btnEstoqueGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastroFuncionariosGerenteEscolha)
-                .addGap(24, 24, 24))
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGerenteEscolhaLayout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(btnVoltarGerenteEscolha, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addGap(161, 161, 161))
         );
         pnlGerenteEscolhaLayout.setVerticalGroup(
             pnlGerenteEscolhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGerenteEscolhaLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(86, 86, 86)
                 .addGroup(pnlGerenteEscolhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEstoqueGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastroFuncionariosGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                    .addComponent(btnCadastroFuncionariosGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEstoqueGerenteEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(btnVoltarGerenteEscolha)
                 .addContainerGap())
         );

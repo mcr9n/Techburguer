@@ -106,7 +106,7 @@ public class LoginGerente extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(pnlLoginGerenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblLoginGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLoginGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLoginGerenteLayout.setVerticalGroup(

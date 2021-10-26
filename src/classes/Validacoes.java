@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * @author dapedu
  */
 public class Validacoes {
-
+        //valida o formato das entradas
 	public static boolean isCPF(String cpf) {
 		boolean isCpf = Pattern.matches("[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}", cpf);
 		return isCpf;

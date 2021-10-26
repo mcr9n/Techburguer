@@ -1,6 +1,7 @@
 package classes;
 
 public abstract class Funcionario extends Pessoa {
+        //contem novos atributos que estendem pessoa mas o construtor não é utilizável já que se trata de uma classe abstrata
 
 	protected String senha;
 	protected float salario;

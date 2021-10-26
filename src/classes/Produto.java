@@ -3,6 +3,7 @@ package classes;
 import java.util.ArrayList;
 
 public class Produto {
+        //classe que instancia um produto que irá compor o pedido. Contém três atributos descritivos.
 
 	private float preco;
 	private String nome;

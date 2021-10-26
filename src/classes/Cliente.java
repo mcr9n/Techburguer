@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Cliente extends Pessoa {
-
+        //contém um arraylist de pedidos e um boolean para indicar se o pedido de aniversario ja foi feito
 	private ArrayList<Pedido> pedidos;
 	private boolean jaFezPedidoAniversario;
 

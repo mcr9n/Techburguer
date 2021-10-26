@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Pedido {
-	
-	private ArrayList<Produto> produtos;
-	private String formaDePagamento;
-	private float total;
-	private boolean deAniversariante;
+        //Esta classe cria um objeto Pedido
+    
+        //Possui esses atributos:
+	private ArrayList<Produto> produtos; //Lista com objetos pedido
+	private String formaDePagamento; //aqui identificamos a forma de pagamento realizada pelo usuario nesse pedido
+	private float total; 
+	private boolean deAniversariante;  //esse boolean é para verificar se ele é aniversariante
 	private int senhaPedido;
 	private boolean pago;
 	private boolean pronto;
-
+        
+        //Construtor:
 	public Pedido(ArrayList<Produto> produtos, String formaDePagamento, float total, boolean deAniversariante, boolean pago, boolean pronto) {
 		Random rand = new Random();
 		this.produtos = produtos;
@@ -23,7 +26,8 @@ public class Pedido {
 		this.pago = pago;
 		this.pronto = pronto;
 	}
-
+        
+        //getters e setters:
 	public ArrayList<Produto> getProdutos() {
 		return produtos;
 	}
@@ -47,7 +51,7 @@ public class Pedido {
 	public boolean isDeAniversariante() {
 		return deAniversariante;
 	}
-
+        
 	public void setDeAniversariante(boolean deAniversariante) {
 		this.deAniversariante = deAniversariante;
 	}

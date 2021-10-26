@@ -332,7 +332,7 @@ public class FazerPedido extends javax.swing.JFrame {
 		if (ProdutosDisponiveis.get(linha).getQuantidade() != 0) {
 			carrinho.add(ProdutosDisponiveis.get(linha));
 			atualizaTabelaCarrinho(carrinho);
-			atualizaPreco(carrinho);
+			atualizaPreco(carrinho, false);
 			ProdutosDisponiveis.get(linha).setQuantidade(ProdutosDisponiveis.get(linha).getQuantidade() - 1);
 
 		} else {
@@ -354,11 +354,12 @@ public class FazerPedido extends javax.swing.JFrame {
 		carrinho.remove(encontraProduto(carrinho, nome));
 
 		atualizaTabelaCarrinho(carrinho);
-		atualizaPreco(carrinho);
+		atualizaPreco(carrinho, false);
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void checkBoxPedidoDeAniversarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxPedidoDeAniversarioActionPerformed
-		// TODO add your handling code here:
+		
+		atualizaPreco(carrinho, true);
     }//GEN-LAST:event_checkBoxPedidoDeAniversarioActionPerformed
 
 	private void atualizaTabelaProdutosDisponiveis(ArrayList<Produto> produtosDisponiveis) {
@@ -405,11 +406,15 @@ public class FazerPedido extends javax.swing.JFrame {
 		return -1;
 	}
 
-	private void atualizaPreco(ArrayList<Produto> carrinho) {
+	private void atualizaPreco(ArrayList<Produto> carrinho, boolean deAniversario) {
 		float valor = 0.0f;
 
 		for (Produto produto : carrinho) {
 			valor += produto.getPreco();
+		}
+		
+		if (deAniversario && checkBoxPedidoDeAniversario.isSelected()) {
+			valor -= valor * 0.10;
 		}
 
 		labelValorTotal.setText(String.format("R$ %.2f", valor));
